@@ -3,6 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { useContext } from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
 
 
 // const image_hosting_kay = import.meta.env.REACT_IMAGE_UPLOAD_API_KEY;
@@ -10,23 +11,21 @@ import { useContext } from 'react';
 
 const SignUp = () => {
 
-    const { createUser, updateUserProfile, googleSignIn } = useContext(AuthContext);
-
+    const { createUser, googleSignIn } = useContext(AuthContext);
     const handelGoogleSignup = () => {
+
         googleSignIn()
             .then(result => {
-                updateUserProfile(result.user.displayName, result.user.photoURL)
-                    .then(result => {
-                        toast.success('Login Successfully');
-                    })
-                    .catch(error => {
-                        toast.error(error.message);
-                    })
-                navogate(lcoate?.state ? lcoate.state : '/profile');
+                toast.success('Successfully logged in');
+                console.log(result);
             })
             .catch(error => {
-                toast.error(error.message);
-                console.log(error);
+                if (error.message === 'Firebase: Error (auth/email-already-in-use).') {
+                    toast.error('Email already in use');
+                }
+                else {
+                    toast.error(error.message);
+                }
             })
     }
 
@@ -45,17 +44,15 @@ const SignUp = () => {
         } else {
             createUser(email, password)
                 .then(result => {
-                    updateUserProfile(name, photo)
-                        .then(result => {
-                            toast.success('Register Successfully');
-                        })
-                        .catch(error => {
-                            toast.error(error.message);
-                        })
-                    navogate(lcoate?.state ? lcoate.state : '/');
+                    toast.success('Successfully logged in');
                 })
                 .catch(error => {
-                    toast.error(error.message);
+                    if (error.message === 'Firebase: Error (auth/email-already-in-use).') {
+                        toast.error('Email already in use');
+                    }
+                    else {
+                        toast.error(error.message);
+                    }
                 })
         }
     }
