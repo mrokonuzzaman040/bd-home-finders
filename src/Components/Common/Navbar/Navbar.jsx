@@ -1,7 +1,7 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
-const user = true;
+const user = false;
 
 const Navbar = () => {
     const items = <>
@@ -41,8 +41,8 @@ const Navbar = () => {
                     {user ?
                         <button className='btn text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50'>Dashboard</button> :
                         <div className="flex gap-4">
-                            <button className="btn text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50">Sign Up</button>
-                            <button className="btn text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50">Sign In</button>
+                            <Link to={'/register'} className="btn text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50">Sign Up</Link>
+                            <Link to={'/login'} className="btn text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50">Sign In</Link>
                         </div>
                     }
                 </div>
