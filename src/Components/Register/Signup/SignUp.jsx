@@ -1,11 +1,63 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { AuthContext } from '../../Providers/AuthProvider';
+import { useContext } from 'react';
+
+
+// const image_hosting_kay = import.meta.env.REACT_IMAGE_UPLOAD_API_KEY;
+// const image_hosting_url = `https://api.imgbb.com/1/upload?key=${image_hosting_kay}`;
 
 const SignUp = () => {
 
+    const { createUser, updateUserProfile, googleSignIn } = useContext(AuthContext);
+
+    const handelGoogleSignup = () => {
+        googleSignIn()
+            .then(result => {
+                updateUserProfile(result.user.displayName, result.user.photoURL)
+                    .then(result => {
+                        toast.success('Login Successfully');
+                    })
+                    .catch(error => {
+                        toast.error(error.message);
+                    })
+                navogate(lcoate?.state ? lcoate.state : '/profile');
+            })
+            .catch(error => {
+                toast.error(error.message);
+                console.log(error);
+            })
+    }
+
     const handelSignup = (e) => {
         e.preventDefault();
-        console.log('signup');
+        const name = e.target.name.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        // const image = e.target.image.files[0];
+        const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{6,}$/;
+
+        if (password.length < 6) {
+            toast.error('Password must be at least 6 characters long');
+        } else if (!passwordRegex.test(password)) {
+            toast.error('Password must contain at least one capital letter, one special character, and one number');
+        } else {
+            createUser(email, password)
+                .then(result => {
+                    updateUserProfile(name, photo)
+                        .then(result => {
+                            toast.success('Register Successfully');
+                        })
+                        .catch(error => {
+                            toast.error(error.message);
+                        })
+                    navogate(lcoate?.state ? lcoate.state : '/');
+                })
+                .catch(error => {
+                    toast.error(error.message);
+                })
+        }
     }
 
     return (
@@ -22,7 +74,7 @@ const SignUp = () => {
                         </h1>
                         <div className="w-full flex-1 mt-8">
                             <div className="flex flex-col items-center">
-                                <button
+                                <button onClick={handelGoogleSignup}
                                     className="w-full max-w-xs font-bold shadow-sm rounded-lg py-3 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline">
                                     <div className="bg-white p-2 rounded-full">
                                         <svg className="w-4" viewBox="0 0 533.5 544.3">
@@ -54,28 +106,35 @@ const SignUp = () => {
                             </div>
 
                             <div className="mx-auto max-w-xs">
-                                <input
-                                    className="w-full px-8 mb-5 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                                    type="text" name='name' placeholder="Full Name" />
-                                <input
-                                    className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                                    type="email" name='email' placeholder="Email" />
+                                <form onSubmit={handelSignup}>
+                                    <input
+                                        className="w-full px-8 mb-5 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                                        type="text" name='name' placeholder="Full Name" />
 
-                                <input
-                                    className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-                                    type="password" name='password' placeholder="Password" />
-                                <button
-                                    className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
-                                    <svg className="w-6 h-6 -ml-2" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
-                                        <circle cx="8.5" cy="7" r="4" />
-                                        <path d="M20 8v6M23 11h-6" />
-                                    </svg>
-                                    <span className="ml-3">
-                                        Sign Up
-                                    </span>
-                                </button>
+                                    {/* <input name='image' type="file" className="file-input file-input-bordered mb-5 file-input-primary w-full max-w-xs" /> */}
+
+                                    <input
+                                        className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border bg-transparent border-gray-200 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                                        type="email" name='email' placeholder="Email" />
+
+                                    <input
+                                        className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
+                                        type="password" name='password' placeholder="Password" />
+                                    <button
+                                        className="mt-5 tracking-wide font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
+                                        <svg className="w-6 h-6 -ml-2" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                                            <circle cx="8.5" cy="7" r="4" />
+                                            <path d="M20 8v6M23 11h-6" />
+                                        </svg>
+                                        <span className="ml-3">
+                                            Sign Up
+                                        </span>
+                                    </button>
+
+                                </form>
+
                                 <p className="mt-6 text-xs text-gray-600 text-center">
                                     Do you have an account? <Link className='underline text-indigo-400' to={'/login'}>Login Here</Link>
                                 </p>
@@ -89,6 +148,7 @@ const SignUp = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </div >
     );
 };
