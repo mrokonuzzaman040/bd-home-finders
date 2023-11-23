@@ -1,9 +1,12 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+
+const user = true;
 
 const Navbar = () => {
     const items = <>
         <li>
-            <a>Home</a>
+            <NavLink className="">Home</NavLink>
         </li>
         <li>
             <a>About</a>
@@ -17,7 +20,7 @@ const Navbar = () => {
     </>
     return (
         <div>
-            <div className="navbar bg-base-100">
+            <div className="navbar bg-base-100 bg-transparent border-b-indigo-800">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -27,7 +30,7 @@ const Navbar = () => {
                             {items}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">daisyUI</a>
+                    <a className="btn btn-ghost text-xl">YourLogo</a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -35,7 +38,13 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                    {user ?
+                        <button className='btn text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50'>Dashboard</button> :
+                        <div className="flex gap-4">
+                            <button className="btn text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50">Sign Up</button>
+                            <button className="btn text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50">Sign In</button>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
