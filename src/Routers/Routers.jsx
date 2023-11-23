@@ -3,8 +3,9 @@ import React from 'react';
 import {
     createBrowserRouter,
 } from "react-router-dom";
-import Home from '../Layout/HomeLayout';
-import HomeLayout from '../Layout/Home/Home';
+
+import HomeLayout from '../Layout/HomeLayout';
+import Home from '../Layout/Home/Home';
 
 const Routers = createBrowserRouter([
     {

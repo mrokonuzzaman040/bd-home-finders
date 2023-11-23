@@ -1,12 +1,10 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
-import Navbar from '../../Components/Common/Navbar/Navbar';
+import HeroSection from '../../Components/Banner/Hero/HeroSection';
 
 const Home = () => {
     return (
         <div>
-            <Navbar />
-            <Outlet />
+            <HeroSection></HeroSection>
         </div>
     );
 };

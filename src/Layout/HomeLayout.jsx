@@ -4,7 +4,8 @@ import Navbar from "../Components/Common/Navbar/Navbar";
 const HomeLayout = () => {
     return (
         <div>
-            This  is home page
+            <Navbar />
+            <Outlet />
         </div>
     );
 };
