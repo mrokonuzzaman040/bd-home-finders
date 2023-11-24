@@ -1,11 +1,8 @@
-import React from 'react';
 import { createContext, useEffect, useState } from "react";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
-
-
-import useAxiosPublic from '../Hooks/usePublicApi';
 import { app } from '../Firebase/firebase';
+import useAxiosPublic from '../Hooks/usePublicApi';
 
 
 
@@ -16,8 +13,8 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    const axiosPublic = useAxiosPublic();
     const googleProvider = new GoogleAuthProvider();
+    const axiosPublic = useAxiosPublic();
 
     const createUser = (email, password) => {
         setLoading(true);
@@ -39,6 +36,11 @@ const AuthProvider = ({ children }) => {
         return signOut(auth);
     }
 
+    const updateUserProfile = (name, photo) => {
+        return updateProfile(auth.currentUser, {
+            displayName: name, photoURL: photo
+        });
+    }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
@@ -46,13 +48,13 @@ const AuthProvider = ({ children }) => {
             if (currentUser) {
                 // get token and store client
                 const userInfo = { email: currentUser.email };
-                // axiosPublic.post('/jwt', userInfo)
-                //     .then(res => {
-                //         if (res.data.token) {
-                //             localStorage.setItem('access-token', res.data.token);
-                //             setLoading(false);
-                //         }
-                //     })
+                axiosPublic.post('/jwt', userInfo)
+                    .then(res => {
+                        if (res.data.token) {
+                            localStorage.setItem('access-token', res.data.token);
+                            setLoading(false);
+                        }
+                    })
             }
             else {
                 // TODO: remove token (if token stored in the client side: Local storage, caching, in memory)
@@ -71,9 +73,9 @@ const AuthProvider = ({ children }) => {
         loading,
         createUser,
         signIn,
-        logOut,
-        // updateUserProfile,
         googleSignIn,
+        logOut,
+        updateUserProfile
     }
 
     return (
