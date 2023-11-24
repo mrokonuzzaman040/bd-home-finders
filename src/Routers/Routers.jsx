@@ -12,7 +12,6 @@ import PrivateRoute from './UsersRoutes/PrivateRoute';
 import DashboardLayout from '../Layout/DashboardLayout';
 import AdsDetails from '../Components/Advertisement/AdsDetails/AdsDetails';
 
-
 const Routers = createBrowserRouter([
     {
         path: "/",
@@ -21,6 +20,18 @@ const Routers = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>,
+            },
+            {
+                path: '/about',
+                element: <h2>About</h2>
+            },
+            {
+                path: '/services',
+                element: <h2>Services</h2>
+            },
+            {
+                path: '/contact',
+                element: <h2>Contact</h2>
             },
             {
                 path: '/details/:id',

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
+import logo from '../../../assets/image/logo.png'
 import useAdmin from '../../Hooks/useAdmin';
 
 const Navbar = () => {
@@ -17,16 +18,16 @@ const Navbar = () => {
 
     const items = <>
         <li>
-            <NavLink to={'/home'} className="">Home</NavLink>
+            <NavLink to={'/'} className="">Home</NavLink>
         </li>
         <li>
-            <a>About</a>
+            <NavLink to={'/about'} className="">About</NavLink>
         </li>
         <li>
-            <a>Blog</a>
+            <NavLink to={'/services'} className="">Services</NavLink>
         </li>
         <li>
-            <a>Contact</a>
+            <NavLink to={'/contact'} className="">Contact</NavLink>
         </li>
     </>
     return (
@@ -41,7 +42,10 @@ const Navbar = () => {
                             {items}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost text-xl">YourLogo</a>
+                    <Link to={'/'} className="flex items-center gap-2">
+                        <img src={logo} alt="logo" className="w-1/2" />
+                    </Link>
+
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
