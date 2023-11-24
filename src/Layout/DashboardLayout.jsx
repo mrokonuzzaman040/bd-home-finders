@@ -29,13 +29,13 @@ const DashboardLayout = () => {
     return (
         <div className="flex">
             {/* dashboard side bar */}
-            <div className="">
+            <div className="w-64 ">
                 <div className="flex items-center justify-center">
                     <Link to={'/'}>
                         <img className="p-4 w-[240px]" src={logo} alt="" />
                     </Link>
                 </div>
-                <div className="w-64 min-h-screen rounded-t-lg mt-10 bg-indigo-400">
+                <div className="min-h-screen rounded-t-lg mt-10 bg-indigo-400">
                     <ul className="menu p-4 gap-2">
                         {
                             isAdmin ? <>
@@ -117,7 +117,7 @@ const DashboardLayout = () => {
 
 
             {/* dashboard content */}
-            <div className="flex-1 p-8 min-h-screen">
+            <div className="flex-1 p-8 max-h-screen">
                 <UsersNav displayName={user.displayName} photoURL={user.photoURL} ></UsersNav>
                 <Outlet></Outlet>
 

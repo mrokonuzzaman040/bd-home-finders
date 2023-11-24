@@ -6,6 +6,9 @@ import usePublicApi from '../../../Components/Hooks/usePublicApi';
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
+
+
+
 const AddProperty = () => {
     const { register, handleSubmit, reset } = useForm();
     const axiosPublic = usePublicApi();
@@ -176,7 +179,7 @@ const AddProperty = () => {
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-city">
                                 Property Image
                             </label>
-                            <input {...register('home_photo', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-indigo-100 focus:border-indigo-500" id="grid-city" type="file" placeholder="1200" />
+                            <input {...register('home_photo', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-indigo-100 focus:border-indigo-500" type="file" />
 
                         </div>
                     </div>
