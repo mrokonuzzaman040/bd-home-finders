@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "./useAuth";
-import useAxiosSecure from "./useAxiosSecure";
+import useSecureApi from "./useSecureApi";
 
 const useAdmin = () => {
     const { user, loading } = useAuth();
-    const axiosSecure = useAxiosSecure();
+    const axiosSecure = useSecureApi();
     const { data: isAdmin, isPending: isAdminLoading } = useQuery({
         queryKey: [user?.email, 'isAdmin'],
         enabled: !loading,

@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-
-const user = false;
+import { AuthContext } from '../../Providers/AuthProvider';
+import useAdmin from '../../Hooks/useAdmin';
 
 const Navbar = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+    // const [isAdmin] = useAdmin();
+    // const [cart] = useCart();
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error));
+    }
+
     const items = <>
         <li>
             <NavLink className="">Home</NavLink>
@@ -39,7 +50,10 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
                     {user ?
-                        <button className='btn text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50'>Dashboard</button> :
+                        <div className="flex gap-4">
+                            <button className='btn text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50'>Dashboard</button>
+                            <button onClick={handleLogOut} className='btn text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50'>Logout</button>
+                        </div> :
                         <div className="flex gap-4">
                             <Link to={'/register'} className="btn text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50">Sign Up</Link>
                             <Link to={'/login'} className="btn text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50">Sign In</Link>
