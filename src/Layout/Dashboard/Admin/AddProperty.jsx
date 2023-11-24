@@ -1,7 +1,5 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-
-import useAuth from '../../../Components/Hooks/useAuth';
 import usePublicApi from '../../../Components/Hooks/usePublicApi';
 
 // Image Hosting
