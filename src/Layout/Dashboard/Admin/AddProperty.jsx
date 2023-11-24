@@ -1,6 +1,8 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import usePublicApi from '../../../Components/Hooks/usePublicApi';
+import Swal from 'sweetalert2';
+import useAuth from '../../../Components/Hooks/useAuth';
 
 // Image Hosting
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -12,15 +14,54 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 const AddProperty = () => {
     const { register, handleSubmit, reset } = useForm();
     const axiosPublic = usePublicApi();
+    const { user } = useAuth();
 
     const handelAddProperty = async (data) => {
-        console.log(data);
         const imageFile = { home_photo: data.home_photo[0] };
         const res = await axiosPublic.post(image_hosting_api, imageFile, {
             headers: {
                 'content-type': 'multipart/form-data'
             }
         });
+        if (res.data.success) {
+            const newProperty = {
+                home_name: data.home_name,
+                home_location: data.home_location,
+                home_description: data.home_description,
+                home_price: data.home_price,
+                home_type: data.home_type,
+                home_area: data.home_area,
+                home_bed: data.home_bed,
+                home_bath: data.home_bath,
+                home_garage: data.home_garage,
+                home_size: data.home_size,
+                home_status: data.home_status,
+                home_agent: data.home_agent,
+                home_photo: res.data.data.display_url,
+                home_owner_name: user.displayName,
+                home_owner_photo: user.photoURL,
+                home_owner_email: user.email,
+                home_owner_phone: user?.phoneNumber,
+            }
+            const res = await axiosPublic.post('http://localhost:5000/addProperty', newProperty);
+            if (res.data.insertedId) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Property Added Successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                reset();
+            }
+        }
+        else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            })
+        }
+
 
         // console.log(res.data);
     }
@@ -52,7 +93,7 @@ const AddProperty = () => {
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                                 Property Description
                             </label>
-                            <textarea {...register('home_description', { required: true })} className="textarea textarea-bordered h-24 w-full" placeholder="Bio"></textarea>
+                            <textarea {...register('home_description', { required: true })} className="textarea textarea-bordered h-24 w-full" placeholder=" Property Description"></textarea>
                         </div>
 
                     </div>
@@ -185,7 +226,7 @@ const AddProperty = () => {
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-2">
                         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                            <button className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
+                            <button className="bg-indigo-500 hover:ring-2 hover:ring-indigo-700  text-white font-bold py-2 px-4 rounded">
                                 Add Property
                             </button>
                         </div>
