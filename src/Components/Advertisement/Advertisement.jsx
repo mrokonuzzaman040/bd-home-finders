@@ -11,8 +11,6 @@ const Advertisement = () => {
 
     }, []);
 
-    console.log(loadedData)
-
     return (
         <div className="bg-indigo-300 rounded-xl p-4">
             <div className="">
