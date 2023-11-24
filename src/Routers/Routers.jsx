@@ -10,6 +10,7 @@ import Login from '../Components/Register/Login/Login';
 import SignUp from '../Components/Register/Signup/SignUp';
 import PrivateRoute from './UsersRoutes/PrivateRoute';
 import DashboardLayout from '../Layout/DashboardLayout';
+import AdsDetails from '../Components/Advertisement/AdsDetails/AdsDetails';
 
 
 const Routers = createBrowserRouter([
@@ -20,6 +21,11 @@ const Routers = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>,
+            },
+            {
+                path: '/details/:id',
+                element: <AdsDetails></AdsDetails>,
+                loader: ({ params }) => fetch(`http://localhost:5000/ads/${params.id}`)
             },
             {
                 path: '/login',

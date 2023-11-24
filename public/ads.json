@@ -1,38 +1,136 @@
 [
     {
-        "image": "https://example.com/property1-image.jpg",
-        "location": "456 Elm Street, Townsville, State",
-        "price_range": "$300,000 - $350,000",
-        "verification_status": "verified"
-    },
-    {
-        "image": "https://example.com/property2-image.jpg",
-        "location": "789 Oak Avenue, Villageland, State",
-        "price_range": "$700,000 - $750,000",
-        "verification_status": "verified"
-    },
-    {
-        "image": "https://example.com/property3-image.jpg",
-        "location": "101 Pine Road, Hamletown, State",
+        "image": "https://i.ibb.co/jDRhtTH/1d4bee5743308bd444d415ead2c33f91l-m3499103263od-w640-h480-x2.webp",
+        "location": "1234 Oak Street, Cityville, State",
         "price_range": "$400,000 - $450,000",
-        "verification_status": "unverified"
+        "verification_status": "verified",
+        "description": "Beautiful family home with spacious rooms and a scenic view.",
+        "open_house": "Saturday, November 26th, 12 PM - 3 PM",
+        "home_highlights": [
+            "3 bedrooms",
+            "2.5 bathrooms",
+            "Backyard patio"
+        ],
+        "home_details": {
+            "year_built": 2005,
+            "lot_size": "0.25 acres",
+            "floor_space": "2,000 sq. ft."
+        },
+        "home_facility": [
+            "Garage",
+            "Fireplace",
+            "Central heating"
+        ]
     },
     {
-        "image": "https://example.com/property4-image.jpg",
-        "location": "222 Maple Lane, Cityburg, State",
-        "price_range": "$550,000 - $600,000",
-        "verification_status": "verified"
+        "image": "https://i.ibb.co/ch825Zp/1d4bee5743308bd444d415ead2c33f91l-m2732405615od-w480-h360-x2.webp",
+        "location": "5678 Maple Avenue, Townsville, State",
+        "price_range": "$600,000 - $650,000",
+        "verification_status": "verified",
+        "description": "Modern loft-style condo with stunning city views.",
+        "open_house": "Sunday, December 4th, 1 PM - 4 PM",
+        "home_highlights": [
+            "Open floor plan",
+            "Floor-to-ceiling windows"
+        ],
+        "home_details": {
+            "year_built": 2010,
+            "floor_space": "1,500 sq. ft."
+        },
+        "home_facility": [
+            "Balcony",
+            "Gym",
+            "Security system"
+        ]
     },
     {
-        "image": "https://example.com/property5-image.jpg",
-        "location": "777 Cedar Court, Countryside, State",
-        "price_range": "$650,000 - $700,000",
-        "verification_status": "unverified"
+        "image": "https://i.ibb.co/DfRyPyQ/1d4bee5743308bd444d415ead2c33f91l-m2643874717od-w640-h480-x2.webp",
+        "location": "910 Elm Court, Villageland, State",
+        "price_range": "$300,000 - $350,000",
+        "verification_status": "unverified",
+        "description": "Cozy starter home in a quiet neighborhood.",
+        "open_house": "Saturday, December 10th, 10 AM - 1 PM",
+        "home_highlights": [
+            "2 bedrooms",
+            "1 bathroom",
+            "Fenced backyard"
+        ],
+        "home_details": {
+            "year_built": 1998,
+            "lot_size": "0.15 acres",
+            "floor_space": "1,000 sq. ft."
+        },
+        "home_facility": [
+            "Carport",
+            "Garden"
+        ]
     },
     {
-        "image": "https://example.com/property6-image.jpg",
-        "location": "888 Birch Street, Suburbia, State",
-        "price_range": "$250,000 - $300,000",
-        "verification_status": "verified"
+        "image": "https://i.ibb.co/52txc5z/1d4bee5743308bd444d415ead2c33f91l-m161473942od-w640-h480-x2.webp",
+        "location": "1212 Pine Lane, Hamletown, State",
+        "price_range": "$750,000 - $800,000",
+        "verification_status": "verified",
+        "description": "Luxurious estate with panoramic mountain views.",
+        "open_house": "Sunday, December 18th, 11 AM - 2 PM",
+        "home_highlights": [
+            "5 bedrooms",
+            "4.5 bathrooms",
+            "Swimming pool"
+        ],
+        "home_details": {
+            "year_built": 2015,
+            "lot_size": "1 acre",
+            "floor_space": "4,500 sq. ft."
+        },
+        "home_facility": [
+            "Guest house",
+            "Home theater",
+            "Tennis court"
+        ]
+    },
+    {
+        "image": "https://i.ibb.co/XJFPWWK/1d4bee5743308bd444d415ead2c33f91l-m131860359od-w640-h480-x2.webp",
+        "location": "1414 Cedar Street, Countryside, State",
+        "price_range": "$500,000 - $550,000",
+        "verification_status": "unverified",
+        "description": "Charming cottage-style home near parks and schools.",
+        "open_house": "Saturday, December 24th, 9 AM - 12 PM",
+        "home_highlights": [
+            "3 bedrooms",
+            "2 bathrooms",
+            "Covered porch"
+        ],
+        "home_details": {
+            "year_built": 2000,
+            "lot_size": "0.3 acres",
+            "floor_space": "1,800 sq. ft."
+        },
+        "home_facility": [
+            "Deck",
+            "Storage shed",
+            "Playground area"
+        ]
+    },
+    {
+        "image": "https://i.ibb.co/F31zCFW/b0a9edc53e9154a7a269e7d067a0e0eal-m483047177od-w1024-h768-x2.webp",
+        "location": "1616 Birch Avenue, Suburbia, State",
+        "price_range": "$350,000 - $400,000",
+        "verification_status": "verified",
+        "description": "Renovated townhouse with modern amenities.",
+        "open_house": "Sunday, December 30th, 2 PM - 5 PM",
+        "home_highlights": [
+            "2 bedrooms",
+            "2.5 bathrooms",
+            "Attached garage"
+        ],
+        "home_details": {
+            "year_built": 2008,
+            "floor_space": "1,200 sq. ft."
+        },
+        "home_facility": [
+            "Hardwood floors",
+            "Walk-in closets",
+            "Community pool"
+        ]
     }
 ]
