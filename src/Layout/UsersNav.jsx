@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import userPic from '../assets/image/user.png';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../Components/Providers/AuthProvider';
 
 const UsersNav = ({ photoURL, displayName }) => {
+
+    const { logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error));
+    }
     return (
         <div>
             <div className="navbar rounded-lg bg-indigo-400">
@@ -22,13 +32,13 @@ const UsersNav = ({ photoURL, displayName }) => {
                         </label>
                         <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
                             <li>
-                                <a className="justify-between">
+                                <Link to={'/dashboard/profile'} className="justify-between">
                                     Profile
                                     <span className="badge">New</span>
-                                </a>
+                                </Link>
                             </li>
                             <li><a>Settings</a></li>
-                            <li><a>Logout</a></li>
+                            <li><button onClick={handleLogOut}>Logout</button></li>
                         </ul>
                     </div>
                 </div>

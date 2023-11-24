@@ -14,6 +14,7 @@ import AdsDetails from '../Components/Advertisement/AdsDetails/AdsDetails';
 import AdminHome from '../Layout/Dashboard/Admin/AdminHome';
 import AddProperty from '../Layout/Dashboard/Admin/AddProperty';
 import ManageUser from '../Layout/Dashboard/Admin/ManageUser';
+import Profile from '../Layout/Dashboard/Profile';
 
 const Routers = createBrowserRouter([
     {
@@ -117,6 +118,10 @@ const Routers = createBrowserRouter([
                 path: 'agentPaymentHistory',
                 element: <h2>Agent Payment History</h2>,
             },
+            {
+                path: 'profile',
+                element: <Profile></Profile>,
+            }
         ],
     },
 ]);
