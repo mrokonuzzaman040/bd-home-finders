@@ -3,21 +3,22 @@ import { useForm } from "react-hook-form";
 import usePublicApi from '../../../Components/Hooks/usePublicApi';
 import Swal from 'sweetalert2';
 import useAuth from '../../../Components/Hooks/useAuth';
+import useSecureApi from '../../../Components/Hooks/useSecureApi';
 
 // Image Hosting
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
-
-
-
 const AddProperty = () => {
     const { register, handleSubmit, reset } = useForm();
     const axiosPublic = usePublicApi();
+    const axiosSecure = useSecureApi();
     const { user } = useAuth();
 
     const handelAddProperty = async (data) => {
-        const imageFile = { home_photo: data.home_photo[0] };
+        console.log(data.image);
+        // const imageFile = { home_photo: data.home_photo };
+        const imageFile = { home_photo: data.image[0] }
         const res = await axiosPublic.post(image_hosting_api, imageFile, {
             headers: {
                 'content-type': 'multipart/form-data'
@@ -43,7 +44,7 @@ const AddProperty = () => {
                 home_owner_email: user.email,
                 home_owner_phone: user?.phoneNumber,
             }
-            const res = await axiosPublic.post('http://localhost:5000/addProperty', newProperty);
+            const res = await axiosSecure.post('http://localhost:5000/addProperty', newProperty);
             if (res.data.insertedId) {
                 Swal.fire({
                     icon: 'success',
@@ -221,7 +222,6 @@ const AddProperty = () => {
                                 Property Image
                             </label>
                             <input {...register('home_photo', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-4 leading-tight focus:outline-none focus:bg-indigo-100 focus:border-indigo-500" type="file" />
-
                         </div>
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-2">
@@ -257,19 +257,19 @@ export default AddProperty;
 // const home_photo = e.target.home_photo.value;
 
 // const newProperty = {
-    // home_name,
-    // home_location,
-    // home_description,
-    // home_price,
-    // home_type,
-    // home_area,
-    // home_bed,
-    // home_bath,
-    // home_garage,
-    // home_size,
-    // home_status,
-    // home_agent,
-    // home_photo,
+// home_name,
+// home_location,
+// home_description,
+// home_price,
+// home_type,
+// home_area,
+// home_bed,
+// home_bath,
+// home_garage,
+// home_size,
+// home_status,
+// home_agent,
+// home_photo,
 // }
 
 // console.log(newProperty);
