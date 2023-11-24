@@ -257,19 +257,19 @@ export default AddProperty;
 // const home_photo = e.target.home_photo.value;
 
 // const newProperty = {
-//     home_name,
-//     home_location,
-//     home_description,
-//     home_price,
-//     home_type,
-//     home_area,
-//     home_bed,
-//     home_bath,
-//     home_garage,
-//     home_size,
-//     home_status,
-//     home_agent,
-//     home_photo,
+    // home_name,
+    // home_location,
+    // home_description,
+    // home_price,
+    // home_type,
+    // home_area,
+    // home_bed,
+    // home_bath,
+    // home_garage,
+    // home_size,
+    // home_status,
+    // home_agent,
+    // home_photo,
 // }
 
 // console.log(newProperty);
