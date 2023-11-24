@@ -51,7 +51,7 @@ const Navbar = () => {
                 <div className="navbar-end">
                     {user ?
                         <div className="flex gap-4">
-                            <button className='btn text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50'>Dashboard</button>
+                            <Link to={'/dashboard'} className='btn text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50'>Dashboard</Link>
                             <button onClick={handleLogOut} className='btn text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50'>Logout</button>
                         </div> :
                         <div className="flex gap-4">

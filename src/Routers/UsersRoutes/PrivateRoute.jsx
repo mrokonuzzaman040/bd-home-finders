@@ -2,17 +2,12 @@ import { Navigate, useLocation } from "react-router";
 import useAuth from "../../Components/Hooks/useAuth";
 
 
-
 const PrivateRoute = ({ children }) => {
     const { user, loading } = useAuth();
     const location = useLocation();
 
     if (loading) {
-        return <div className="flex items-center justify-center h-screen">
-            <div className="spinner-border text-primary" role="status">
-                <span className="loading loading-ring loading-lg"></span>
-            </div>
-        </div>
+        return <progress className="progress w-56"></progress>
     }
 
     if (user) {
