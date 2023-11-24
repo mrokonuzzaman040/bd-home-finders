@@ -1,0 +1,38 @@
+[
+    {
+        "image": "https://example.com/property1-image.jpg",
+        "location": "456 Elm Street, Townsville, State",
+        "price_range": "$300,000 - $350,000",
+        "verification_status": "verified"
+    },
+    {
+        "image": "https://example.com/property2-image.jpg",
+        "location": "789 Oak Avenue, Villageland, State",
+        "price_range": "$700,000 - $750,000",
+        "verification_status": "verified"
+    },
+    {
+        "image": "https://example.com/property3-image.jpg",
+        "location": "101 Pine Road, Hamletown, State",
+        "price_range": "$400,000 - $450,000",
+        "verification_status": "unverified"
+    },
+    {
+        "image": "https://example.com/property4-image.jpg",
+        "location": "222 Maple Lane, Cityburg, State",
+        "price_range": "$550,000 - $600,000",
+        "verification_status": "verified"
+    },
+    {
+        "image": "https://example.com/property5-image.jpg",
+        "location": "777 Cedar Court, Countryside, State",
+        "price_range": "$650,000 - $700,000",
+        "verification_status": "unverified"
+    },
+    {
+        "image": "https://example.com/property6-image.jpg",
+        "location": "888 Birch Street, Suburbia, State",
+        "price_range": "$250,000 - $300,000",
+        "verification_status": "verified"
+    }
+]

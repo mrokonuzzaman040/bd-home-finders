@@ -36,7 +36,7 @@ const Routers = createBrowserRouter([
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children: [
             {
-                path: '/',
+                path: 'fuck',
                 element: <h2>Hello</h2>
             }
         ],
