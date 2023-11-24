@@ -13,6 +13,7 @@ import DashboardLayout from '../Layout/DashboardLayout';
 import AdsDetails from '../Components/Advertisement/AdsDetails/AdsDetails';
 import AdminHome from '../Layout/Dashboard/Admin/AdminHome';
 import AddProperty from '../Layout/Dashboard/Admin/AddProperty';
+import ManageUser from '../Layout/Dashboard/Admin/ManageUser';
 
 const Routers = createBrowserRouter([
     {
@@ -68,7 +69,7 @@ const Routers = createBrowserRouter([
             },
             {
                 path: 'manageUsers',
-                element: <h2>Manage Users</h2>,
+                element: <ManageUser></ManageUser>,
             },
             {
                 path: 'manageReview',
