@@ -26,6 +26,8 @@ import AgentReviews from '../Layout/Dashboard/Agent/AgentReviews';
 import AgentSoldProperty from '../Layout/Dashboard/Agent/AgentSoldProperty';
 import ManageProperty from '../Layout/Dashboard/Admin/ManageProperty';
 import AdminReviews from '../Layout/Dashboard/Admin/AdminReviews';
+import AllProperties from '../Components/AllProperties/AllProperties';
+import ErrorPAge from '../Components/Pages/Error/ErrorPAge';
 
 const Routers = createBrowserRouter([
     {
@@ -37,20 +39,12 @@ const Routers = createBrowserRouter([
                 element: <Home></Home>,
             },
             {
-                path: '/about',
-                element: <h2>About</h2>
-            },
-            {
-                path: '/services',
-                element: <h2>Services</h2>
-            },
-            {
-                path: '/contact',
-                element: <h2>Contact</h2>
+                path: '/allProperties',
+                element: <AllProperties></AllProperties>
             },
             {
                 path: '/details/:id',
-                element: <AdsDetails></AdsDetails>,
+                element: <PrivateRoute><AdsDetails></AdsDetails></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/ads/${params.id}`)
             },
             {
@@ -132,6 +126,10 @@ const Routers = createBrowserRouter([
             }
         ],
     },
+    {
+        path: "*",
+        element: <ErrorPAge></ErrorPAge>,
+    }
 ]);
 
 

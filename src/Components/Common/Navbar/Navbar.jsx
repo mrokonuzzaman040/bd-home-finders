@@ -21,13 +21,7 @@ const Navbar = () => {
             <NavLink to={'/'} className="">Home</NavLink>
         </li>
         <li>
-            <NavLink to={'/about'} className="">About</NavLink>
-        </li>
-        <li>
-            <NavLink to={'/services'} className="">Services</NavLink>
-        </li>
-        <li>
-            <NavLink to={'/contact'} className="">Contact</NavLink>
+            <NavLink to={'/allProperties'} className="">All Properties</NavLink>
         </li>
     </>
     return (
