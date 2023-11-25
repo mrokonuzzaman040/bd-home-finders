@@ -13,8 +13,7 @@ const AdsDetails = () => {
     const { _id, location, image, price_range, verification_status, description, open_house, home_highlights, home_details, home_facility } = useLoaderData();
 
     const { floor_space, lot_size, year_built } = home_details;
-
-    console.log(home_facility);
+    
     return (
         <div className="flex flex-col gap-4">
             <div className="flex items-center justify-center p-4">

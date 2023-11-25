@@ -42,6 +42,7 @@ const AddProperty = () => {
                 home_owner_photo: user.photoURL,
                 home_owner_email: user.email,
                 home_owner_phone: user?.phoneNumber,
+                home_status: 'Pending',
             }
             const res = await axiosSecure.post('http://localhost:5000/addProperty', newProperty);
             if (res.data.insertedId) {
