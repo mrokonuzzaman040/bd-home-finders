@@ -114,10 +114,9 @@ const ManageUser = () => {
 
                                         <td>
                                             <select className="btn btn-ghost btn-xs" defaultValue={user.role} onChange={(e) => handleRoleChange(user, e)}>
-                                                <option value="">Select Role</option>
+                                                <option value="user">User</option>
                                                 <option value="admin">Admin</option>
                                                 <option value="agent">Agent</option>
-                                                <option value="user">User</option>
                                             </select>
                                         </td>
                                         <th>

@@ -33,9 +33,6 @@ const DashboardLayout = () => {
     const [isAdmin] = useAdmin();
     const [isAgent] = useAgent();
 
-    console.log('isAdmin', isAdmin);
-    console.log('isAgent', isAgent);
-
     return (
         <div className="flex">
             {/* dashboard side bar */}
@@ -47,107 +44,80 @@ const DashboardLayout = () => {
                 </div>
                 <div className="min-h-screen rounded-t-lg mt-10 bg-indigo-400">
                     <ul className="menu p-4 gap-2">
-                        {
-                            isAdmin ?
+                        {isAdmin ?
+                            <>
+                                <li>
+                                    <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/adminHome">
+                                        <IoHome></IoHome >
+                                        Home</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/addProparty">
+                                        <MdAddHome></MdAddHome >
+                                        Add Proparty</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/manageProparty">
+                                        <CiSettings ></CiSettings>
+                                        Manage Proparty</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/manageUsers">
+                                        <FaUserShield ></FaUserShield>
+                                        Manage Users</NavLink>
+                                </li>
+                                <li>
+                                    <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/manageReview">
+                                        <FaGrinStars ></FaGrinStars>
+                                        Manage Review</NavLink>
+                                </li>
+                            </>
+                            : isAgent ?
                                 <>
-                                    <>
-                                        <li>
-                                            <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/adminHome">
-                                                <IoHome></IoHome >
-                                                Home</NavLink>
-                                        </li>
-                                        <li>
-                                            <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/addProparty">
-                                                <MdAddHome></MdAddHome >
-                                                Add Proparty</NavLink>
-                                        </li>
-                                        <li>
-                                            <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/manageProparty">
-                                                <CiSettings ></CiSettings>
-                                                Manage Proparty</NavLink>
-                                        </li>
-                                        <li>
-                                            <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/manageUsers">
-                                                <FaUserShield ></FaUserShield>
-                                                Manage Users</NavLink>
-                                        </li>
-                                        <li>
-                                            <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/manageReview">
-                                                <FaGrinStars ></FaGrinStars>
-                                                Manage Review</NavLink>
-                                        </li>
-                                    </>
-                                </> : <>
-                                    <>
-                                        <li>
-                                            <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/userHome">
-                                                <IoHome></IoHome >
-                                                Home</NavLink>
-                                        </li>
-                                        <li>
-                                            <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/wishlists">
-                                                <FaHeartCirclePlus ></FaHeartCirclePlus>
-                                                Wishlist</NavLink>
-                                        </li>
-                                        <li>
-                                            <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/boughtPropertys">
-                                                <GiTakeMyMoney ></GiTakeMyMoney>
-                                                Property Bougth</NavLink>
-                                        </li>
-                                        <li>
-                                            <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/review">
-                                                <FaBook></FaBook>
-                                                My Review</NavLink>
-                                        </li>
-                                    </>
+                                    <li>
+                                        <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/agentHome">
+                                            <IoHome></IoHome >
+                                            Home</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/agentProperty">
+                                            <MdAddHome></MdAddHome >
+                                            Add Proparty</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/soldPropertys">
+                                            <CiSettings ></CiSettings>
+                                            Sold Property</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/agentsRequest">
+                                            <FaUserShield ></FaUserShield>
+                                            Pending Request</NavLink>
+                                    </li>
                                 </>
-                                    ||
-                                    isAgent ?
-                                    <>
-                                        <li>
-                                            <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/agentHome">
-                                                <IoHome></IoHome >
-                                                Home</NavLink>
-                                        </li>
-                                        <li>
-                                            <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/agentProperty">
-                                                <MdAddHome></MdAddHome >
-                                                Add Proparty</NavLink>
-                                        </li>
-                                        <li>
-                                            <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/soldPropertys">
-                                                <CiSettings ></CiSettings>
-                                                Sold Property</NavLink>
-                                        </li>
-                                        <li>
-                                            <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/agentsRequest">
-                                                <FaUserShield ></FaUserShield>
-                                                Pending Request</NavLink>
-                                        </li>
-                                    </> :
-                                    <>
-                                        <li>
-                                            <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/userHome">
-                                                <IoHome></IoHome >
-                                                Home</NavLink>
-                                        </li>
-                                        <li>
-                                            <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/wishlists">
-                                                <FaHeartCirclePlus ></FaHeartCirclePlus>
-                                                Wishlist</NavLink>
-                                        </li>
-                                        <li>
-                                            <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/boughtPropertys">
-                                                <GiTakeMyMoney ></GiTakeMyMoney>
-                                                Property Bougth</NavLink>
-                                        </li>
-                                        <li>
-                                            <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/review">
-                                                <FaBook></FaBook>
-                                                My Review</NavLink>
-                                        </li>
-                                    </>
-                        }
+                                :
+                                <>
+                                    <li>
+                                        <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/userHome">
+                                            <IoHome></IoHome >
+                                            Home</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/wishlists">
+                                            <FaHeartCirclePlus ></FaHeartCirclePlus>
+                                            Wishlist</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/boughtPropertys">
+                                            <GiTakeMyMoney ></GiTakeMyMoney>
+                                            Property Bougth</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/review">
+                                            <FaBook></FaBook>
+                                            My Review</NavLink>
+                                    </li>
+                                </>}
                         <div className="divider"></div>
                         <li>
                             <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/">
