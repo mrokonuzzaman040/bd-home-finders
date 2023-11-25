@@ -1,50 +1,69 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import usePublicApi from '../../Hooks/usePublicApi';
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../../Providers/AuthProvider';
 import SocialLogin from '../../Hooks/SocialLogin/SocialLogin';
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
+
+    // Image Hosting
+    const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+    const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
     const axiosPublic = usePublicApi();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const onSubmit = data => {
+    const [image, setImage] = useState('');
+    const onSubmit = async (data) => {
+        const formData = new FormData();
+        formData.append('image', data.photoURL[0]);
+        fetch(image_hosting_api, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then((res) => {
+                setImage(res.data.display_url)
 
-        createUser(data.email, data.password)
-            .then(result => {
-                const loggedUser = result.user;
-                console.log(loggedUser);
-                updateUserProfile(data.name, data.photoURL)
-                    .then(() => {
-                        // create user entry in the database
-                        const userInfo = {
-                            name: data.name,
-                            email: data.email
-                        }
-                        axiosPublic.post('/users', userInfo)
-                            .then(res => {
-                                if (res.data.insertedId) {
-                                    console.log('user added to the database')
-                                    reset();
-                                    Swal.fire({
-                                        position: 'top-end',
-                                        icon: 'success',
-                                        title: 'User created successfully.',
-                                        showConfirmButton: false,
-                                        timer: 1500
-                                    });
-                                    navigate('/');
-                                }
-                            })
-
-
-                    })
-                    .catch(error => console.log(error))
+                if (res.data.display_url) {
+                    createUser(data.email, data.password)
+                        .then(result => {
+                            const loggedUser = result.user;
+                            console.log(loggedUser);
+                            
+                            updateUserProfile(data.name, image)
+                                .then(() => {
+                                    // create user entry in the database
+                                    const userInfo = {
+                                        name: data.name,
+                                        email: data.email
+                                    }
+                                    axiosPublic.post('/users', userInfo)
+                                        .then(res => {
+                                            if (res.data.insertedId) {
+                                                console.log('user added to the database')
+                                                reset();
+                                                Swal.fire({
+                                                    position: 'top-end',
+                                                    icon: 'success',
+                                                    title: 'User created successfully.',
+                                                    showConfirmButton: false,
+                                                    timer: 1500
+                                                });
+                                                navigate('/');
+                                            }
+                                        })
+                                })
+                                .catch(error => console.log(error))
+                        })
+                }
             })
+            .catch(error => console.log(error))
+
     };
 
 
@@ -67,9 +86,9 @@ const SignUp = () => {
                         </div>
                         <div className="form-control">
                             <label className="label">
-                                <span className="label-text">Photo URL</span>
+                                <span className="label-text">Profile Photo</span>
                             </label>
-                            <input type="text"  {...register("photoURL", { required: true })} placeholder="Photo URL" className="input input-bordered" />
+                            <input type="file"  {...register("photoURL", { required: true })} className="file input-bordered" />
                             {errors.photoURL && <span className="text-red-600">Photo URL is required</span>}
                         </div>
                         <div className="form-control">

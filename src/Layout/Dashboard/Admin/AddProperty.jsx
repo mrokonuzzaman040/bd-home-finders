@@ -19,54 +19,55 @@ const AddProperty = () => {
 
     const handelAddProperty = async (data) => {
         const formData = new FormData();
-        formData.append('image', data.home_photo[0])
+        formData.append('image', data.home_photo[0]);
         fetch(image_hosting_api, {
             method: 'POST',
             body: formData
         })
             .then(res => res.json()).then((res) => {
                 setImage(res.data.display_url)
+                if (res.data.display_url) {
+                    const newProperty = {
+                        home_name: data.home_name,
+                        home_location: data.home_location,
+                        home_description: data.home_description,
+                        home_price: data.home_price,
+                        home_type: data.home_type,
+                        home_area: data.home_area,
+                        home_bed: data.home_bed,
+                        home_bath: data.home_bath,
+                        home_garage: data.home_garage,
+                        home_size: data.home_size,
+                        home_status: 'Pending',
+                        home_agent: user.email,
+                        home_photo: res.data.display_url,
+                    }
+                    axiosSecure.post('/propertys', newProperty)
+                        .then(res => {
+                            if (res.status === 200) {
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'success',
+                                    title: 'Property Added',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                                reset();
+                            }
+                            else {
+                                Swal.fire({
+                                    position: 'top-end',
+                                    icon: 'error',
+                                    title: 'Something went wrong',
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                })
+                            }
+                        })
+                }
             })
 
-        const newProperty = {
-            home_name: data.home_name,
-            home_location: data.home_location,
-            home_description: data.home_description,
-            home_price: data.home_price,
-            home_type: data.home_type,
-            home_area: data.home_area,
-            home_bed: data.home_bed,
-            home_bath: data.home_bath,
-            home_garage: data.home_garage,
-            home_size: data.home_size,
-            home_status: data.home_status,
-            home_agent: data.home_agent,
-            home_photo: image,
-            home_owner_name: user.displayName,
-            home_owner_photo: user.photoURL,
-            home_owner_email: user.email,
-            home_owner_phone: user?.phoneNumber,
-            home_status: 'Pending',
-        }
 
-        axiosSecure.post('http://localhost:5000/propertys', newProperty).then((res) => {
-            if (res.data.insertedId) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Property Added Successfully',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-                reset();
-            }
-            else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Something went wrong!',
-                })
-            }
-        })
     }
 
     return (
@@ -88,7 +89,7 @@ const AddProperty = () => {
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-last-name">
                                 Property Location
                             </label>
-                            <input {...register('home_location', { required: true, pattern: /^[A-Za-z]+$/i })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-indigo-100 focus:border-indigo-500" id="grid-last-name" type="text" placeholder="Mirpur-11" />
+                            <input {...register('home_location', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-indigo-100 focus:border-indigo-500" id="grid-last-name" type="text" placeholder="Mirpur-11" />
                         </div>
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-6">
