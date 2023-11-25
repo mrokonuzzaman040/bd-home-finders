@@ -1,15 +1,11 @@
 import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
-import logo from '../../../assets/image/logo.png'
-import useAdmin from '../../Hooks/useAdmin';
+import logo from '../../../assets/image/logo.png';
 
 const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext);
-    // const [isAdmin] = useAdmin();
-    // const [cart] = useCart();
-
     const handleLogOut = () => {
         logOut()
             .then(() => { })
