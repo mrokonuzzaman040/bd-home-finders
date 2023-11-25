@@ -15,6 +15,17 @@ import AdminHome from '../Layout/Dashboard/Admin/AdminHome';
 import AddProperty from '../Layout/Dashboard/Admin/AddProperty';
 import ManageUser from '../Layout/Dashboard/Admin/ManageUser';
 import Profile from '../Layout/Dashboard/Profile';
+import UerHome from '../Layout/Dashboard/Users/UerHome';
+import UserWishlist from '../Layout/Dashboard/Users/UserWishlist';
+import UserPropertyBougth from '../Layout/Dashboard/Users/UserPropertyBougth';
+import MyReviews from '../Layout/Dashboard/Users/MyReviews';
+import AgentHome from '../Layout/Dashboard/Agent/AgentHome';
+import AgentRequestProperty from '../Layout/Dashboard/Agent/AgentRequestProperty';
+import AgentAddProperty from '../Layout/Dashboard/Agent/AgentAddProperty';
+import AgentReviews from '../Layout/Dashboard/Agent/AgentReviews';
+import AgentSoldProperty from '../Layout/Dashboard/Agent/AgentSoldProperty';
+import ManageProperty from '../Layout/Dashboard/Admin/ManageProperty';
+import AdminReviews from '../Layout/Dashboard/Admin/AdminReviews';
 
 const Routers = createBrowserRouter([
     {
@@ -56,71 +67,68 @@ const Routers = createBrowserRouter([
         path: 'dashboard',
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children: [
+            // admin routes
             {
                 path: 'adminHome',
-                element: <AdminHome></AdminHome>,
+                element: <PrivateRoute><AdminHome></AdminHome></PrivateRoute>,
             },
             {
                 path: 'addProparty',
-                element: <AddProperty></AddProperty>,
+                element: <PrivateRoute><AddProperty></AddProperty></PrivateRoute>,
             },
             {
                 path: 'manageProparty',
-                element: <h2>Manage Proparty</h2>,
+                element: <PrivateRoute><ManageProperty></ManageProperty></PrivateRoute>,
             },
             {
                 path: 'manageUsers',
-                element: <ManageUser></ManageUser>,
+                element: <PrivateRoute><ManageUser></ManageUser></PrivateRoute>,
             },
             {
                 path: 'manageReview',
-                element: <h2>Manage Review</h2>,
+                element: <PrivateRoute><AdminReviews></AdminReviews></PrivateRoute>,
             },
             // user routes
             {
                 path: 'userHome',
-                element: <h2>User Home</h2>,
+                element: <PrivateRoute><UerHome></UerHome></PrivateRoute>,
             },
             {
-                path: 'history',
-                element: <h2>Not History</h2>,
+                path: 'wishlists',
+                element: <PrivateRoute><UserWishlist></UserWishlist></PrivateRoute>,
             },
             {
-                path: 'cart',
-                element: <h2>My Cart</h2>,
+                path: 'boughtPropertys',
+                element: <PrivateRoute><UserPropertyBougth></UserPropertyBougth></PrivateRoute>,
             },
             {
                 path: 'review',
-                element: <h2>Add a Review</h2>,
-            },
-            {
-                path: 'paymentHistory',
-                element: <h2>Real Payment History</h2>,
+                element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>,
             },
             // agent routes
             {
                 path: 'agentHome',
-                element: <h2>Agent Home</h2>,
+                element: <PrivateRoute><AgentHome></AgentHome></PrivateRoute>,
             },
             {
-                path: 'agentHistory',
-                element: <h2>Agent History</h2>,
+                path: 'agentsRequest',
+                element: <PrivateRoute><AgentRequestProperty></AgentRequestProperty></PrivateRoute>,
             },
             {
-                path: 'agentCart',
-                element: <h2>Agent Cart</h2>,
+                path: 'agentProperty',
+                element: <PrivateRoute><AgentAddProperty></AgentAddProperty></PrivateRoute>,
             },
             {
                 path: 'agentReview',
-                element: <h2>Agent Review</h2>,
+                element: <PrivateRoute><AgentReviews></AgentReviews></PrivateRoute>,
             },
             {
-                path: 'agentPaymentHistory',
-                element: <h2>Agent Payment History</h2>,
+                path: 'soldPropertys',
+                element: <PrivateRoute><AgentSoldProperty></AgentSoldProperty></PrivateRoute>,
             },
             {
                 path: 'profile',
-                element: <Profile></Profile>,
+                element: <PrivateRoute><Profile></Profile></PrivateRoute>,
             }
         ],
     },

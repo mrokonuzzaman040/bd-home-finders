@@ -4,16 +4,17 @@ import usePublicApi from '../../../Components/Hooks/usePublicApi';
 import Swal from 'sweetalert2';
 import useAuth from '../../../Components/Hooks/useAuth';
 import useSecureApi from '../../../Components/Hooks/useSecureApi';
-
 // Image Hosting
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
-const AddProperty = () => {
+const AgentAddProperty = () => {
+
     const { register, handleSubmit, reset } = useForm();
     const axiosPublic = usePublicApi();
     const axiosSecure = useSecureApi();
     const { user } = useAuth();
+
 
     const handelAddProperty = async (data) => {
         console.log(data.home_photo);
@@ -65,7 +66,6 @@ const AddProperty = () => {
 
         // console.log(res.data);
     }
-
     return (
         <div>
             <div className="flex flex-col items-center justify-center mt-3">
@@ -122,9 +122,9 @@ const AddProperty = () => {
                                         <path
                                             fillRule="evenodd"
                                             d="M5.293 6.707a1 1 0 010-1.414L8.586 1.5a2 2 0 012.828
-                                            0l2.829 2.829a1 1 0 11-1.414 1.414L11
-                                            4.414V13a1 1 0 11-2 0V4.414L6.707
-                                            6.707a1 1 0 01-1.414 0z"
+                                        0l2.829 2.829a1 1 0 11-1.414 1.414L11
+                                        4.414V13a1 1 0 11-2 0V4.414L6.707
+                                        6.707a1 1 0 01-1.414 0z"
                                             clipRule="evenodd"
                                         />
                                     </svg>
@@ -162,9 +162,9 @@ const AddProperty = () => {
                                         <path
                                             fillRule="evenodd"
                                             d="M5.293 6.707a1 1 0 010-1.414L8.586 1.5a2 2 0 012.828
-                                            0l2.829 2.829a1 1 0 11-1.414 1.414L11
-                                            4.414V13a1 1 0 11-2 0V4.414L6.707
-                                            6.707a1 1 0 01-1.414 0z"
+                                        0l2.829 2.829a1 1 0 11-1.414 1.414L11
+                                        4.414V13a1 1 0 11-2 0V4.414L6.707
+                                        6.707a1 1 0 01-1.414 0z"
                                             clipRule="evenodd"
                                         />
                                     </svg>
@@ -199,9 +199,9 @@ const AddProperty = () => {
                                         <path
                                             fillRule="evenodd"
                                             d="M5.293 6.707a1 1 0 010-1.414L8.586 1.5a2 2 0 012.828
-                                            0l2.829 2.829a1 1 0 11-1.414 1.414L11
-                                            4.414V13a1 1 0 11-2 0V4.414L6.707
-                                            6.707a1 1 0 01-1.414 0z"
+                                        0l2.829 2.829a1 1 0 11-1.414 1.414L11
+                                        4.414V13a1 1 0 11-2 0V4.414L6.707
+                                        6.707a1 1 0 01-1.414 0z"
                                             clipRule="evenodd"
                                         />
                                     </svg>
@@ -236,39 +236,4 @@ const AddProperty = () => {
     );
 };
 
-export default AddProperty;
-
-
-// e.preventDefault();
-
-// const home_name = e.target.home_name.value;
-// const home_location = e.target.home_location.value;
-// const home_description = e.target.home_description.value;
-// const home_price = e.target.home_price.value;
-// const home_type = e.target.home_type.value;
-// const home_area = e.target.home_area.value;
-// const home_bed = e.target.home_bed.value;
-// const home_bath = e.target.home_bath.value;
-// const home_garage = e.target.home_garage.value;
-// const home_size = e.target.home_size.value;
-// const home_status = e.target.home_status.value;
-// const home_agent = e.target.home_agent.value;
-// const home_photo = e.target.home_photo.value;
-
-// const newProperty = {
-// home_name,
-// home_location,
-// home_description,
-// home_price,
-// home_type,
-// home_area,
-// home_bed,
-// home_bath,
-// home_garage,
-// home_size,
-// home_status,
-// home_agent,
-// home_photo,
-// }
-
-// console.log(newProperty);
+export default AgentAddProperty;
