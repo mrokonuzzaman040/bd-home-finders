@@ -16,9 +16,8 @@ const AddProperty = () => {
     const { user } = useAuth();
 
     const handelAddProperty = async (data) => {
-        console.log(data.image);
-        // const imageFile = { home_photo: data.home_photo };
-        const imageFile = { home_photo: data.image[0] }
+        console.log(data.home_photo);
+        const imageFile = { home_photo: data.home_photo[0] };
         const res = await axiosPublic.post(image_hosting_api, imageFile, {
             headers: {
                 'content-type': 'multipart/form-data'
@@ -94,7 +93,7 @@ const AddProperty = () => {
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                                 Property Description
                             </label>
-                            <textarea {...register('home_description', { required: true })} className="textarea textarea-bordered h-24 w-full" placeholder=" Property Description"></textarea>
+                            <textarea {...register('home_description', { required: true })} className="textarea textarea-bordered h-32 w-full" placeholder=" Property Description"></textarea>
                         </div>
 
                     </div>

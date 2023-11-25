@@ -25,7 +25,6 @@ const Review = () => {
     }
         , [publicRequest]);
 
-    console.log(reviews);
     return (
         <section className="my-20">
             <Swiper className="mySwiper">
