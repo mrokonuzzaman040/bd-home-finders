@@ -45,7 +45,7 @@ const Routers = createBrowserRouter([
             {
                 path: '/details/:id',
                 element: <PrivateRoute><AdsDetails></AdsDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/ads/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/propertys/${params.id}`)
             },
             {
                 path: '/login',

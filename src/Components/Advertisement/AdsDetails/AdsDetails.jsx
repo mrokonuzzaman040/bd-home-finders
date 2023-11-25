@@ -10,21 +10,38 @@ import { CgUnavailable } from "react-icons/cg";
 
 const AdsDetails = () => {
 
-    const { _id, location, image, price_range, verification_status, description, open_house, home_highlights, home_details, home_facility } = useLoaderData();
+    const { _id,
+        home_location,
+        home_name,
+        home_description,
+        home_price,
+        home_type,
+        home_area,
+        home_bed,
+        home_bath,
+        home_garage,
+        home_size,
+        home_status,
+        home_agent,
+        home_photo,
+        home_owner_name,
+        home_owner_photo,
+        home_owner_email,
+        home_owner_phone,
+    } = useLoaderData();
 
-    const { floor_space, lot_size, year_built } = home_details;
-    
+
     return (
         <div className="flex flex-col gap-4">
             <div className="flex items-center justify-center p-4">
-                <img src={image} alt="image" />
+                <img src={home_photo} alt="home_photo" />
             </div>
             <div className="flex bg-indigo-300 p-10 justify-between items-center">
                 <div className=" flex flex-col justify-start gap-2">
-                    <h2 className='text-xl flex items-center gap-2'> <FaMapMarkerAlt /> Location: {location}</h2>
-                    <p className='text-xl flex items-center gap-2 font-bold'><LuBadgeDollarSign /> Price Range: {price_range}</p>
+                    <h2 className='text-xl flex items-center gap-2'> <FaMapMarkerAlt /> Location: {home_location}</h2>
+                    <p className='text-xl flex items-center gap-2 font-bold'><LuBadgeDollarSign /> Price Range: {home_price}</p>
                     <p className='checkbox-primary'>{
-                        verification_status === "verified" ? <p className='flex items-center justify-start gap-1'><MdOutlineVerified className='text-green-700' />Verified</p> : <p className='flex items-center justify-start gap-1'> <GoUnverified className='text-red-700' />Unverified</p>
+                        home_status === "verified" ? <p className='flex items-center justify-start gap-1'><MdOutlineVerified className='text-green-700' />Verified</p> : <p className='flex items-center justify-start gap-1'> <GoUnverified className='text-red-700' />Unverified</p>
                     }</p>
                 </div>
                 <div className="">
@@ -36,7 +53,7 @@ const AdsDetails = () => {
                 <h2 className='text-2xl text-black'>Description</h2>
                 <div className="">
                     <p className='text-gray-700'>
-                        {description}
+                        {home_description}
                     </p>
                 </div>
             </div>
@@ -45,7 +62,7 @@ const AdsDetails = () => {
                     <h2 className='text-2xl text-black'>Open House</h2>
                     <div className="">
                         <p className='text-gray-700'>
-                            {open_house}
+                            {home_size}
                         </p>
                     </div>
                 </div>
@@ -53,13 +70,13 @@ const AdsDetails = () => {
                     <h2 className='text-2xl text-black'>Home Highlights</h2>
                     <div className="">
                         <p className='text-gray-700'>
-                            {home_highlights}
+                            {home_type}
                         </p>
                     </div>
                 </div>
             </div>
 
-            <div className=" bg-indigo-300 p-10">
+            {/* <div className=" bg-indigo-300 p-10">
                 <h2 className='text-2xl text-black'>Home Details</h2>
                 <div className="">
                     <p className='text-gray-700'>
@@ -78,8 +95,8 @@ const AdsDetails = () => {
                         }
                     </p>
                 </div>
-            </div>
-            <div className="grid grid-cols-2 justify-center bg-indigo-300 p-10">
+            </div> */}
+            {/* <div className="grid grid-cols-2 justify-center bg-indigo-300 p-10">
                 <div className="">
                     <h2 className='text-2xl text-black'>Home Facilities</h2>
                     <div className="">
@@ -100,7 +117,7 @@ const AdsDetails = () => {
                     </div>
                 </div>
 
-            </div>
+            </div> */}
         </div>
     );
 };

@@ -18,7 +18,6 @@ const AddProperty = () => {
 
 
     const handelAddProperty = async (data) => {
-
         const formData = new FormData();
         formData.append('image', data.home_photo[0])
         fetch(image_hosting_api, {
@@ -27,7 +26,6 @@ const AddProperty = () => {
         })
             .then(res => res.json()).then((res) => {
                 setImage(res.data.display_url)
-                console.log(res.data.display_url);
             })
 
         const newProperty = {
@@ -51,7 +49,7 @@ const AddProperty = () => {
             home_status: 'Pending',
         }
 
-        const res = axiosSecure.post('http://localhost:5000/propertys', newProperty).then((res) => {
+        axiosSecure.post('http://localhost:5000/propertys', newProperty).then((res) => {
             if (res.data.insertedId) {
                 Swal.fire({
                     icon: 'success',
@@ -69,11 +67,6 @@ const AddProperty = () => {
                 })
             }
         })
-
-
-
-
-        // console.log(res.data);
     }
 
     return (
