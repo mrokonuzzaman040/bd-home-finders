@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import usePublicApi from '../../../Components/Hooks/usePublicApi';
 import Swal from 'sweetalert2';
@@ -11,40 +11,47 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 
 const AddProperty = () => {
     const { register, handleSubmit, reset } = useForm();
-    const axiosPublic = usePublicApi();
     const axiosSecure = useSecureApi();
     const { user } = useAuth();
+    const [image, setImage] = useState();
+
+
 
     const handelAddProperty = async (data) => {
-        console.log(data.home_photo);
-        const imageFile = { home_photo: data.home_photo[0] };
-        const res = await axiosPublic.post(image_hosting_api, imageFile, {
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-        });
-        if (res.data.success) {
-            const newProperty = {
-                home_name: data.home_name,
-                home_location: data.home_location,
-                home_description: data.home_description,
-                home_price: data.home_price,
-                home_type: data.home_type,
-                home_area: data.home_area,
-                home_bed: data.home_bed,
-                home_bath: data.home_bath,
-                home_garage: data.home_garage,
-                home_size: data.home_size,
-                home_status: data.home_status,
-                home_agent: data.home_agent,
-                home_photo: res.data.data.display_url,
-                home_owner_name: user.displayName,
-                home_owner_photo: user.photoURL,
-                home_owner_email: user.email,
-                home_owner_phone: user?.phoneNumber,
-                home_status: 'Pending',
-            }
-            const res = await axiosSecure.post('http://localhost:5000/addProperty', newProperty);
+
+        const formData = new FormData();
+        formData.append('image', data.home_photo[0])
+        fetch(image_hosting_api, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json()).then((res) => {
+                setImage(res.data.display_url)
+                console.log(res.data.display_url);
+            })
+
+        const newProperty = {
+            home_name: data.home_name,
+            home_location: data.home_location,
+            home_description: data.home_description,
+            home_price: data.home_price,
+            home_type: data.home_type,
+            home_area: data.home_area,
+            home_bed: data.home_bed,
+            home_bath: data.home_bath,
+            home_garage: data.home_garage,
+            home_size: data.home_size,
+            home_status: data.home_status,
+            home_agent: data.home_agent,
+            home_photo: image,
+            home_owner_name: user.displayName,
+            home_owner_photo: user.photoURL,
+            home_owner_email: user.email,
+            home_owner_phone: user?.phoneNumber,
+            home_status: 'Pending',
+        }
+
+        const res = axiosSecure.post('http://localhost:5000/propertys', newProperty).then((res) => {
             if (res.data.insertedId) {
                 Swal.fire({
                     icon: 'success',
@@ -54,14 +61,16 @@ const AddProperty = () => {
                 })
                 reset();
             }
-        }
-        else {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Something went wrong!',
-            })
-        }
+            else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                })
+            }
+        })
+
+
 
 
         // console.log(res.data);
