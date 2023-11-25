@@ -12,11 +12,13 @@ import { FaBath, FaBed, FaCar } from "react-icons/fa";
 import { MdOutlineLandscape } from "react-icons/md";
 import { TbResize } from "react-icons/tb";
 import useAuth from '../../Hooks/useAuth';
+import useSecureApi from '../../Hooks/useSecureApi';
 
-const { user } = useAuth();
+
 
 const AdsDetails = () => {
-
+    const { user } = useAuth();
+    const secureApi = useSecureApi();
     const { _id,
         home_location,
         home_name,
@@ -29,16 +31,15 @@ const AdsDetails = () => {
         home_garage,
         home_size,
         home_status,
-        home_agent,
         home_photo,
         home_owner_name,
         home_owner_photo,
         home_owner_email,
-        home_owner_phone,
     } = useLoaderData();
 
 
     const handelWishClick = (id) => {
+        console.log('wish clicked');
         const wishData = {
             home_id: id,
             home_name,
@@ -55,7 +56,14 @@ const AdsDetails = () => {
             photo: user.photoURL,
         }
 
-        
+        secureApi.post('/wishlist', wishData)
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+
     }
 
     return (
@@ -73,7 +81,7 @@ const AdsDetails = () => {
                     }</p>
                 </div>
                 <div className="flex flex-col gap-3">
-                    <button onClick={() => { handelWishClick(_id) }} className='btn text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50'><FaHeartCirclePlus /> Add to wishlist</button>
+                    <button onClick={()=>handelWishClick(_id)} className='btn text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50'><FaHeartCirclePlus /> Add to wishlist</button>
                     <h2 className='flex justify-center items-center btn'><MdPerson ></MdPerson> Agent Name: {home_owner_name}</h2>
                 </div>
             </div>
