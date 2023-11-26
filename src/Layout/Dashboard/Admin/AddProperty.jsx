@@ -256,7 +256,7 @@ export default AddProperty;
 // const home_name = e.target.home_name.value;
 // const home_location = e.target.home_location.value;
 // const home_description = e.target.home_description.value;
-// const home_price = e.target.home_price.value;
+// const home_starting_price = e.target.home_starting_price.value;
 // const home_type = e.target.home_type.value;
 // const home_area = e.target.home_area.value;
 // const home_bed = e.target.home_bed.value;
@@ -271,7 +271,7 @@ export default AddProperty;
 // home_name,
 // home_location,
 // home_description,
-// home_price,
+// home_starting_price,
 // home_type,
 // home_area,
 // home_bed,

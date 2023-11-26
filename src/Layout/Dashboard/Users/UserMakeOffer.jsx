@@ -11,7 +11,7 @@ import useAuth from '../../../Components/Hooks/useAuth';
 const UserMakeOffer = () => {
     const { user } = useAuth();
     const data = useLoaderData();
-    const { home_name, home_location, home_owner_name, home_price, home_photo, email } = data;
+    const { home_name, home_location, home_owner_name, home_starting_price, home_photo, email } = data;
     const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString());
 
     useEffect(() => {
@@ -39,7 +39,7 @@ const UserMakeOffer = () => {
                         <h2 className='text-xl flex items-center gap-2'> <FaMapMarkerAlt /> Location: {home_location}</h2>
                         <div className='text-xl flex items-center gap-2'>
                             <FaDollarSign /> Price:
-                            <input type="text" value={home_price} onChange={handlePriceChange} />
+                            <input type="text" value={home_starting_price} onChange={handlePriceChange} />
                         </div>
                         <h2 className='text-xl flex items-center gap-2'><MdPerson /> Agent Name: {home_owner_name}</h2>
                     </div>

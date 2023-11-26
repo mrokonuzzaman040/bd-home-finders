@@ -25,7 +25,8 @@ const AdsDetails = () => {
         home_location,
         home_name,
         home_description,
-        home_price,
+        home_ending_price,
+        home_starting_price,
         home_type,
         home_area,
         home_bed,
@@ -45,7 +46,8 @@ const AdsDetails = () => {
             home_id: id,
             home_name,
             home_location,
-            home_price,
+            home_starting_price,
+            home_ending_price,
             home_photo,
             home_owner_name,
             home_owner_photo,
@@ -85,7 +87,7 @@ const AdsDetails = () => {
                 <div className=" flex flex-col justify-start gap-2">
                     <h2 className='text-xl flex items-center gap-2'><BsFillHouseHeartFill ></BsFillHouseHeartFill>House Name: {home_name}</h2>
                     <h2 className='text-xl flex items-center gap-2'> <FaMapMarkerAlt /> Location: {home_location}</h2>
-                    <p className='text-xl flex items-center gap-2 font-bold'><LuBadgeDollarSign /> Price Range: {home_price}</p>
+                    <p className='text-xl flex items-center gap-2 font-bold'><LuBadgeDollarSign /> Price Range: ${home_starting_price} to ${home_ending_price}</p>
                     <p className='checkbox-primary'>{
                         home_status === "verified" ? <p className='flex items-center justify-start gap-1'><MdOutlineVerified className='text-green-700' />Verified</p> : <p className='flex items-center justify-start gap-1'> <GoUnverified className='text-red-700' />Unverified</p>
                     }</p>

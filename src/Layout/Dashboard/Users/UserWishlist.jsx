@@ -65,7 +65,7 @@ const UserWishlist = () => {
                             </figure>
                             <div className="card-body glass">
                                 <h2 className="card-title">Titel:{wish.home_name}</h2>
-                                <p>Price: ${wish.home_price}</p>
+                                <p>Price: ${wish.home_starting_price} to ${wish.home_ending_price}</p>
                                 <p>Location: {wish.home_location}</p>
                                 <p>Agent Name: {wish.home_owner_name}</p>
                                 <p className='checkbox-primary'>{

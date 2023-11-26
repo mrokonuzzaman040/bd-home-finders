@@ -32,7 +32,7 @@ const AllProperties = () => {
                             </figure>
                             <div className="card-body glass">
                                 <h2 className="card-title">{ads.home_name}</h2>
-                                <p>$ {ads.home_price}</p>
+                                <p>$ {ads.home_starting_price} to $ {ads.home_ending_price}</p>
                                 <p className='checkbox-primary'>{
                                     ads.home_status === "Verified" ? <p className='flex items-center justify-start gap-1'><MdOutlineVerified className='text-green-700' />Verified</p> : <p className='flex items-center justify-start gap-1'> <GoUnverified className='text-red-700' />Unverified</p>
                                 }</p>
