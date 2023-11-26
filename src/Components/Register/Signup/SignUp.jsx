@@ -34,7 +34,7 @@ const SignUp = () => {
                         .then(result => {
                             const loggedUser = result.user;
                             console.log(loggedUser);
-                            
+
                             updateUserProfile(data.name, image)
                                 .then(() => {
                                     // create user entry in the database
@@ -56,6 +56,7 @@ const SignUp = () => {
                                                 });
                                                 navigate('/');
                                             }
+
                                         })
                                 })
                                 .catch(error => console.log(error))

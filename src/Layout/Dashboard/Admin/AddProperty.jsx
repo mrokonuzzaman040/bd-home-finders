@@ -24,48 +24,51 @@ const AddProperty = () => {
             method: 'POST',
             body: formData
         })
-            .then(res => res.json()).then((res) => {
-                setImage(res.data.display_url)
-                if (res.data.display_url) {
-                    const newProperty = {
-                        home_name: data.home_name,
-                        home_location: data.home_location,
-                        home_description: data.home_description,
-                        home_price: data.home_price,
-                        home_type: data.home_type,
-                        home_area: data.home_area,
-                        home_bed: data.home_bed,
-                        home_bath: data.home_bath,
-                        home_garage: data.home_garage,
-                        home_size: data.home_size,
-                        home_status: 'Pending',
-                        home_agent: user.email,
-                        home_photo: res.data.display_url,
-                    }
-                    axiosSecure.post('/propertys', newProperty)
-                        .then(res => {
-                            if (res.status === 200) {
-                                Swal.fire({
-                                    position: 'top-end',
-                                    icon: 'success',
-                                    title: 'Property Added',
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                })
-                                reset();
-                            }
-                            else {
-                                Swal.fire({
-                                    position: 'top-end',
-                                    icon: 'error',
-                                    title: 'Something went wrong',
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                })
-                            }
-                        })
-                }
-            })
+
+            .then(res => res.json()).then((res) => { })
+
+        // .then(res => res.json()).then((res) => {
+        //     setImage(res.data.display_url)
+        //     if (res.data.display_url) {
+        //         const newProperty = {
+        //             home_name: data.home_name,
+        //             home_location: data.home_location,
+        //             home_description: data.home_description,
+        //             home_price: data.home_price,
+        //             home_type: data.home_type,
+        //             home_area: data.home_area,
+        //             home_bed: data.home_bed,
+        //             home_bath: data.home_bath,
+        //             home_garage: data.home_garage,
+        //             home_size: data.home_size,
+        //             home_status: 'Pending',
+        //             home_agent: user.email,
+        //             home_photo: res.data.display_url,
+        //         }
+        //         axiosSecure.post('/propertys', newProperty)
+        //             .then(res => {
+        //                 if (res.status === 200) {
+        //                     Swal.fire({
+        //                         position: 'top-end',
+        //                         icon: 'success',
+        //                         title: 'Property Added',
+        //                         showConfirmButton: false,
+        //                         timer: 1500
+        //                     })
+        //                     reset();
+        //                 }
+
+        //             })
+        //     } else {
+        //         Swal.fire({
+        //             position: 'top-end',
+        //             icon: 'error',
+        //             title: 'Something went wrong',
+        //             showConfirmButton: false,
+        //             timer: 1500
+        //         })
+        //     }
+        // })
 
 
     }
