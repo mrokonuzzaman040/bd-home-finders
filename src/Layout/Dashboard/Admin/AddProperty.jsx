@@ -29,7 +29,8 @@ const AddProperty = () => {
                         home_name: data.home_name,
                         home_location: data.home_location,
                         home_description: data.home_description,
-                        home_price: data.home_price,
+                        home_starting_price: data.home_starting_price,
+                        home_ending_price: data.home_ending_price,
                         home_type: data.home_type,
                         home_area: data.home_area,
                         home_bed: data.home_bed,
@@ -37,7 +38,6 @@ const AddProperty = () => {
                         home_garage: data.home_garage,
                         home_size: data.home_size,
                         home_status: 'Pending',
-                        home_agent: user.email,
                         home_photo: res.data.display_url,
 
                         home_owner_name: user.displayName,
@@ -105,12 +105,17 @@ const AddProperty = () => {
 
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-2">
-                        <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-city">
-                                Property Price
+                        <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0 gap-2">
+                            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-price">
+                                Price Rangge
                             </label>
-                            <input {...register('home_price', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-indigo-100 focus:border-indigo-500" id="grid-city" type="text" placeholder="100000" />
+                            <div className="flex gap-3 items-center">
+                                <input {...register('home_starting_price', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-indigo-100 focus:border-indigo-500" id="grid-price" type="text" placeholder="$100" />
+                                <p className=""> - </p>
+                                <input {...register('home_ending_price', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-indigo-100 focus:border-indigo-500" id="grid-time" type="text" placeholder="$999" />
+                            </div>
                         </div>
+
                         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state">
                                 Property Type
@@ -215,12 +220,12 @@ const AddProperty = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                        {/* <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-zip">
                                 Property Agent
                             </label>
                             <input {...register('home_agent', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-indigo-100 focus:border-indigo-500" id="grid-zip" type="text" placeholder="1" />
-                        </div>
+                        </div> */}
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-2">
                         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">

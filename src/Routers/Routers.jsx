@@ -30,6 +30,7 @@ import AllProperties from '../Components/AllProperties/AllProperties';
 import ErrorPAge from '../Components/Pages/Error/ErrorPAge';
 import AdminRoute from './UsersRoutes/AdminRouts';
 import AgentRoutes from './UsersRoutes/AgentRouts';
+import UserMakeOffer from '../Layout/Dashboard/Users/UserMakeOffer';
 
 const Routers = createBrowserRouter([
     {
@@ -48,6 +49,11 @@ const Routers = createBrowserRouter([
                 path: '/details/:id',
                 element: <PrivateRoute><AdsDetails></AdsDetails></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/propertys/${params.id}`)
+            },
+            {
+                path: 'offer/:id',
+                element: <PrivateRoute><UserMakeOffer></UserMakeOffer></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/wishlist/${params.id}`)
             },
             {
                 path: '/login',

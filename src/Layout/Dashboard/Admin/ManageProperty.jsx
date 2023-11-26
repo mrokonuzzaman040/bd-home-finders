@@ -128,7 +128,7 @@ const ManageProperty = () => {
                                 <th>House Name</th>
                                 <th>House Location</th>
                                 <th>Agent Name</th>
-                                <th>Price</th>
+                                <th>Price Range</th>
                                 <th>Status</th>
                                 <th>Action</th>
                                 <th>Delete</th>
@@ -148,7 +148,7 @@ const ManageProperty = () => {
                                     </td>
                                     <td className="text-right">{item.home_owner_name}</td>
                                     <td>
-                                        <td className="text-right">${item.home_price}</td>
+                                        <td className="text-right">${item.home_starting_price} - ${item.home_ending_price}</td>
                                     </td>
                                     <td className=''>
                                         {

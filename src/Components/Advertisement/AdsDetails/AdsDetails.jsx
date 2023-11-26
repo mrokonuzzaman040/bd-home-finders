@@ -11,9 +11,10 @@ import { GiHouse } from "react-icons/gi";
 import { FaBath, FaBed, FaCar } from "react-icons/fa";
 import { MdOutlineLandscape } from "react-icons/md";
 import { TbResize } from "react-icons/tb";
-import useAuth from '../../Hooks/useAuth';
-import useSecureApi from '../../Hooks/useSecureApi';
 import usePublicApi from '../../Hooks/usePublicApi';
+import Swal from 'sweetalert2';
+import useAuth from '../../Hooks/useAuth';
+
 
 
 
@@ -40,7 +41,6 @@ const AdsDetails = () => {
 
 
     const handelWishClick = (id) => {
-        console.log('wish clicked');
         const wishData = {
             home_id: id,
             home_name,
@@ -51,19 +51,29 @@ const AdsDetails = () => {
             home_owner_photo,
             home_owner_email,
             home_status,
-            username: user.displayName,
+            home_owner_name,
+            home_owner_photo,
+            home_owner_email,
             email: user.email,
-            photo: user.photoURL,
         }
 
         secureApi.post('/wishlist', wishData)
             .then(res => {
-                console.log(res);
+                if (res.data.insertedId) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'Added to wishlist.',
+                    });
+                }
             })
             .catch(err => {
-                console.log(err);
-            })
-
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'An error occurred while adding to wishlist.',
+                });
+            });
     }
 
     return (
