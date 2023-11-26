@@ -22,34 +22,6 @@ const AgentAddedPropertys = () => {
             }
         })
 
-
-    const handelReject = async (id) => {
-        const res = await axiosSecure.patch(`/status/${id}`, { home_status: 'Rejected' }, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        if (res.status === 200) {
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Status Updated',
-                showConfirmButton: false,
-                timer: 1500
-            })
-        }
-        else {
-            Swal.fire({
-                position: 'top-end',
-                icon: 'error',
-                title: 'Something went wrong',
-                showConfirmButton: false,
-                timer: 1500
-            })
-        }
-        refetch();
-    }
-
     const handelDelete = async (id) => {
         Swal.fire({
             title: 'Are you sure?',
@@ -61,7 +33,7 @@ const AgentAddedPropertys = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then(async (result) => {
             if (result.isConfirmed) {
-                const res = await axiosSecure.delete(`/propertys/${id}`);
+                const res = await axiosSecure.delete(`/propertys/agent/${id}`);
                 if (res.status === 200) {
                     Swal.fire({
                         position: 'top-end',
@@ -134,7 +106,7 @@ const AgentAddedPropertys = () => {
                                         {
                                             item.home_status === 'x' ? <>
                                             </> :
-                                                <Link to={`agentUpateProparty/update/${item._id}`} className='btn text-red-400' ><MdBlockFlipped></MdBlockFlipped></Link>
+                                                <Link to={`/updateReject/${item._id}`} className='btn text-red-400' ><MdBlockFlipped></MdBlockFlipped></Link>
                                         }
                                     </td>
                                     <td className=''>

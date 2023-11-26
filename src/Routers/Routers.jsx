@@ -58,6 +58,11 @@ const Routers = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:5000/wishlist/${params.id}`)
             },
             {
+                path: '/updateReject/:id',
+                element: <PrivateRoute><AgentRejectUpdate></AgentRejectUpdate></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/propertys/${params.id}`)
+            },
+            {
                 path: '/login',
                 element: <Login></Login>,
             },
@@ -126,10 +131,7 @@ const Routers = createBrowserRouter([
                 path: 'agentManageProperty',
                 element: <AgentRoutes><AgentAddedPropertys></AgentAddedPropertys></AgentRoutes>,
             },
-            {
-                path: 'agentUpateProparty/update/:id',
-                element: <AgentRoutes><AgentRejectUpdate></AgentRejectUpdate></AgentRoutes>,
-            },
+
             {
                 path: 'agentReview',
                 element: <AgentRoutes><AgentReviews></AgentReviews></AgentRoutes>,

@@ -249,38 +249,3 @@ const AddProperty = () => {
 };
 
 export default AddProperty;
-
-
-// e.preventDefault();
-
-// const home_name = e.target.home_name.value;
-// const home_location = e.target.home_location.value;
-// const home_description = e.target.home_description.value;
-// const home_starting_price = e.target.home_starting_price.value;
-// const home_type = e.target.home_type.value;
-// const home_area = e.target.home_area.value;
-// const home_bed = e.target.home_bed.value;
-// const home_bath = e.target.home_bath.value;
-// const home_garage = e.target.home_garage.value;
-// const home_size = e.target.home_size.value;
-// const home_status = e.target.home_status.value;
-// const home_agent = e.target.home_agent.value;
-// const home_photo = e.target.home_photo.value;
-
-// const newProperty = {
-// home_name,
-// home_location,
-// home_description,
-// home_starting_price,
-// home_type,
-// home_area,
-// home_bed,
-// home_bath,
-// home_garage,
-// home_size,
-// home_status,
-// home_agent,
-// home_photo,
-// }
-
-// console.log(newProperty);
