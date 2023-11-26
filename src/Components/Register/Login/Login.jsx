@@ -7,11 +7,9 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import SocialLogin from '../../Hooks/SocialLogin/SocialLogin';
 
-
-
 const Login = () => {
 
-    const [disabled, setDisabled] = useState(false);
+    const [disabled, setDisabled] = useState(true);
     const { signIn } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
@@ -40,20 +38,19 @@ const Login = () => {
                         popup: 'animate__animated animate__fadeOutUp'
                     }
                 });
-                navigate(from, { replace: true });
+                navigate('/dashboard');
             })
     }
 
     const handleValidateCaptcha = (e) => {
         const user_captcha_value = e.target.value;
         if (validateCaptcha(user_captcha_value)) {
-            setDisabled(false);
+            setDisabled(true);
         }
         else {
             setDisabled(true)
         }
     }
-
 
     return (
         <div>
@@ -89,7 +86,7 @@ const Login = () => {
                             </div>
                             <div className="form-control mt-6">
                                 {/* TODO: apply disabled for re captcha */}
-                                <input disabled={false} className="btn btn-primary" type="submit" value="Login" />
+                                <input className="btn btn-primary" type="submit" value="Login" />
                             </div>
                         </form>
                         <p className='px-6'><small>New Here? <Link to="/signup">Create an account</Link> </small></p>

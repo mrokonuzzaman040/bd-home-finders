@@ -28,6 +28,8 @@ import ManageProperty from '../Layout/Dashboard/Admin/ManageProperty';
 import AdminReviews from '../Layout/Dashboard/Admin/AdminReviews';
 import AllProperties from '../Components/AllProperties/AllProperties';
 import ErrorPAge from '../Components/Pages/Error/ErrorPAge';
+import AdminRoute from './UsersRoutes/AdminRouts';
+import AgentRoutes from './UsersRoutes/AgentRouts';
 
 const Routers = createBrowserRouter([
     {
@@ -64,23 +66,23 @@ const Routers = createBrowserRouter([
             // admin routes
             {
                 path: 'adminHome',
-                element: <PrivateRoute><AdminHome></AdminHome></PrivateRoute>,
+                element: <AdminRoute><AdminHome></AdminHome></AdminRoute>,
             },
             {
                 path: 'addProparty',
-                element: <PrivateRoute><AddProperty></AddProperty></PrivateRoute>,
+                element: <AdminRoute><AddProperty></AddProperty></AdminRoute>,
             },
             {
                 path: 'manageProparty',
-                element: <PrivateRoute><ManageProperty></ManageProperty></PrivateRoute>,
+                element: <AdminRoute><ManageProperty></ManageProperty></AdminRoute>,
             },
             {
                 path: 'manageUsers',
-                element: <PrivateRoute><ManageUser></ManageUser></PrivateRoute>,
+                element: <AdminRoute><ManageUser></ManageUser></AdminRoute>,
             },
             {
                 path: 'manageReview',
-                element: <PrivateRoute><AdminReviews></AdminReviews></PrivateRoute>,
+                element: <AdminRoute><AdminReviews></AdminReviews></AdminRoute>,
             },
             // user routes
             {
@@ -102,23 +104,23 @@ const Routers = createBrowserRouter([
             // agent routes
             {
                 path: 'agentHome',
-                element: <PrivateRoute><AgentHome></AgentHome></PrivateRoute>,
+                element: <AgentRoutes><AgentHome></AgentHome></AgentRoutes>,
             },
             {
                 path: 'agentsRequest',
-                element: <PrivateRoute><AgentRequestProperty></AgentRequestProperty></PrivateRoute>,
+                element: <AgentRoutes><AgentRequestProperty></AgentRequestProperty></AgentRoutes>,
             },
             {
                 path: 'agentProperty',
-                element: <PrivateRoute><AgentAddProperty></AgentAddProperty></PrivateRoute>,
+                element: <AgentRoutes><AgentAddProperty></AgentAddProperty></AgentRoutes>,
             },
             {
                 path: 'agentReview',
-                element: <PrivateRoute><AgentReviews></AgentReviews></PrivateRoute>,
+                element: <AgentRoutes><AgentReviews></AgentReviews></AgentRoutes>,
             },
             {
                 path: 'soldPropertys',
-                element: <PrivateRoute><AgentSoldProperty></AgentSoldProperty></PrivateRoute>,
+                element: <AgentRoutes><AgentSoldProperty></AgentSoldProperty></AgentRoutes>,
             },
             {
                 path: 'profile',

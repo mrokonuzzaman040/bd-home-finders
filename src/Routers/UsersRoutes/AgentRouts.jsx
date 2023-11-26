@@ -1,25 +1,23 @@
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../../Components/Hooks/useAuth";
-import useAdmin from "../../Components/Hooks/useAdmin";
+import useAgent from "../../Components/Hooks/useAgent";
 
-
-
-const AdminRoute = ({ children }) => {
+const AgentRoutes = ({ children }) => {
     const { user, loading } = useAuth();
-    const [isAdmin, isAdminLoading] = useAdmin();
+    const [isAgent, isAgentLoading] = useAgent();
     const location = useLocation();
 
-    if (loading || isAdminLoading) {
+    if (loading || isAgentLoading) {
         return <>
             <div className="flex items-center justify-center h-screen">
                 <div className="spinner-border text-primary" role="status">
-                    <span className="loading loading-infinity loading-lg"></span>
+                    <span className="loading loading-infinity loading-lg text-green-600 text-9xl"></span>
                 </div>
             </div>
         </>
     }
 
-    if (user && isAdmin) {
+    if (user && isAgent) {
         return children;
     }
 
@@ -27,4 +25,4 @@ const AdminRoute = ({ children }) => {
 
 };
 
-export default AdminRoute;
+export default AgentRoutes;

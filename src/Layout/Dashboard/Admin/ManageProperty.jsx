@@ -2,9 +2,13 @@ import React from 'react';
 import useSecureApi from '../../../Components/Hooks/useSecureApi';
 import { useQuery } from '@tanstack/react-query';
 import Swal from "sweetalert2";
+
+// Icons
 import { BsClockHistory } from "react-icons/bs";
 import { MdBlockFlipped } from "react-icons/md";
 import { FaCheckCircle } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+
 
 
 
@@ -20,7 +24,7 @@ const ManageProperty = () => {
             }
         })
 
-    console.log(propertys);
+    //console.log(propertys);
 
     const hadelChangeStatus = async (id) => {
         const res = await axiosSecure.patch(`/status/${id}`, { home_status: 'Verified' }, {
@@ -76,6 +80,39 @@ const ManageProperty = () => {
         refetch();
     }
 
+    const handelDelete = async (id) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'This action cannot be undone!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const res = await axiosSecure.delete(`/propertys/${id}`);
+                if (res.status === 200) {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Deleted',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                } else {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'Something went wrong',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+                refetch();
+            }
+        });
+    }
 
     return (
         <div>
@@ -94,6 +131,7 @@ const ManageProperty = () => {
                                 <th>Price</th>
                                 <th>Status</th>
                                 <th>Action</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -124,6 +162,9 @@ const ManageProperty = () => {
                                     </td>
                                     <td className=''>
                                         <button className='btn text-red-400' onClick={() => handelReject(item._id)}><MdBlockFlipped></MdBlockFlipped></button>
+                                    </td>
+                                    <td className=''>
+                                        <button className='btn text-red-400' onClick={() => handelDelete(item._id)}><MdDelete></MdDelete></button>
                                     </td>
                                 </tr>)
                             }
