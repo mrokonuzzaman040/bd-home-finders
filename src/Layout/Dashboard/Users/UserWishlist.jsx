@@ -56,7 +56,7 @@ const UserWishlist = () => {
 
     return (
         <div className="bg-indigo-300 rounded-xl p-4 mt-2">
-            <div className="grid grid-cols-3 gap-10">
+            <div className="grid grid-cols-2 lg:grid-cols-3 lg:gap-10 justify-between">
                 {
                     wishlist.map(wish =>
                         <div key={wish._id} className="card lg:w-96 w-64 card-compact card-bordered rounded-xl bg-indigo-400">

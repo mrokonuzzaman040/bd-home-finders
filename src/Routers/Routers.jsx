@@ -31,6 +31,8 @@ import ErrorPAge from '../Components/Pages/Error/ErrorPAge';
 import AdminRoute from './UsersRoutes/AdminRouts';
 import AgentRoutes from './UsersRoutes/AgentRouts';
 import UserMakeOffer from '../Layout/Dashboard/Users/UserMakeOffer';
+import AgentAddedPropertys from '../Layout/Dashboard/Agent/AgentAddedPropertys';
+import AgentRejectUpdate from '../Layout/Dashboard/Agent/AgentRejectUpdate';
 
 const Routers = createBrowserRouter([
     {
@@ -119,6 +121,14 @@ const Routers = createBrowserRouter([
             {
                 path: 'agentProperty',
                 element: <AgentRoutes><AgentAddProperty></AgentAddProperty></AgentRoutes>,
+            },
+            {
+                path: 'agentManageProperty',
+                element: <AgentRoutes><AgentAddedPropertys></AgentAddedPropertys></AgentRoutes>,
+            },
+            {
+                path: 'agentUpateProparty/update/:id',
+                element: <AgentRoutes><AgentRejectUpdate></AgentRejectUpdate></AgentRoutes>,
             },
             {
                 path: 'agentReview',

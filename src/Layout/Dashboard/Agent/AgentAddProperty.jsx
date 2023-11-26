@@ -91,7 +91,7 @@ const AgentAddProperty = () => {
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-last-name">
                                 Property Location
                             </label>
-                            <input {...register('home_location', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-indigo-100 focus:border-indigo-500" type="text" placeholder="Mirpur-11" />
+                            <input {...register('home_location', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-indigo-100 focus:border-indigo-500" id="grid-last-name" type="text" placeholder="Mirpur-11" />
                         </div>
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-6">
@@ -104,54 +104,17 @@ const AgentAddProperty = () => {
 
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-2">
-                        <div className="flex flex-wrap -mx-3 mb-2">
-                            <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0 gap-2">
-                                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-price">
-                                    Price Rangge
-                                </label>
-                                <div className="flex gap-3 items-center">
-                                    <input {...register('home_starting_price', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-indigo-100 focus:border-indigo-500" id="grid-price" type="text" placeholder="$100" />
-                                    <p className=""> - </p>
-                                    <input {...register('home_ending_price', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-indigo-100 focus:border-indigo-500" id="grid-time" type="text" placeholder="$999" />
-                                </div>
+                        <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0 gap-2">
+                            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-price">
+                                Price Rangge
+                            </label>
+                            <div className="flex gap-3 items-center">
+                                <input {...register('home_starting_price', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-indigo-100 focus:border-indigo-500" id="grid-price" type="text" placeholder="$100" />
+                                <p className=""> - </p>
+                                <input {...register('home_ending_price', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-indigo-100 focus:border-indigo-500" id="grid-time" type="text" placeholder="$999" />
                             </div>
-
-                            <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state">
-                                    Property Type
-                                </label>
-                                <div className="relative">
-                                    <select {...register('home_type', { required: true })} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-indigo-100 focus:border-indigo-500" id="grid-state">
-                                        <option>Flat</option>
-                                        <option>House</option>
-                                        <option>Office</option>
-                                        <option>Shop</option>
-                                        <option>Garage</option>
-                                        <option>Land</option>
-                                    </select>
-                                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                        <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                            <path
-                                                fillRule="evenodd"
-                                                d="M5.293 6.707a1 1 0 010-1.414L8.586 1.5a2 2 0 012.828
-                                            0l2.829 2.829a1 1 0 11-1.414 1.414L11
-                                            4.414V13a1 1 0 11-2 0V4.414L6.707
-                                            6.707a1 1 0 01-1.414 0z"
-                                                clipRule="evenodd"
-                                            />
-                                        </svg>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-zip">
-                                    Property Area
-                                </label>
-                                <input {...register('home_area', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-indigo-100 focus:border-indigo-500" id="grid-zip" type="text" placeholder="1200" />
-                            </div>
-
                         </div>
+
                         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state">
                                 Property Type
@@ -256,12 +219,12 @@ const AgentAddProperty = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-zip">
-                                Property Agent
-                            </label>
-                            <input {...register('home_agent', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-indigo-100 focus:border-indigo-500" id="grid-zip" type="text" placeholder="1" />
-                        </div>
+                        {/* <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-zip">
+                            Property Agent
+                        </label>
+                        <input {...register('home_agent', { required: true })} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-indigo-100 focus:border-indigo-500" id="grid-zip" type="text" placeholder="1" />
+                    </div> */}
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-2">
                         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">

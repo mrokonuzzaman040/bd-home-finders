@@ -89,7 +89,7 @@ const AdsDetails = () => {
                     <h2 className='text-xl flex items-center gap-2'> <FaMapMarkerAlt /> Location: {home_location}</h2>
                     <p className='text-xl flex items-center gap-2 font-bold'><LuBadgeDollarSign /> Price Range: ${home_starting_price} to ${home_ending_price}</p>
                     <p className='checkbox-primary'>{
-                        home_status === "verified" ? <p className='flex items-center justify-start gap-1'><MdOutlineVerified className='text-green-700' />Verified</p> : <p className='flex items-center justify-start gap-1'> <GoUnverified className='text-red-700' />Unverified</p>
+                        home_status === "Verified" ? <p className='flex items-center justify-start gap-1'><MdOutlineVerified className='text-green-700' />Verified</p> : <p className='flex items-center justify-start gap-1'> <GoUnverified className='text-red-700' />Unverified</p>
                     }</p>
                 </div>
                 <div className="flex flex-col gap-3">

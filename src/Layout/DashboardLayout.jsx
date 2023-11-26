@@ -85,6 +85,11 @@ const DashboardLayout = () => {
                                             Add Proparty</NavLink>
                                     </li>
                                     <li>
+                                        <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/agentManageProperty">
+                                            <MdAddHome></MdAddHome >
+                                            Manage Propertys</NavLink>
+                                    </li>
+                                    <li>
                                         <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/soldPropertys">
                                             <CiSettings ></CiSettings>
                                             Sold Property</NavLink>
