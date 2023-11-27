@@ -1,23 +1,34 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import useSecureApi from '../../../../Components/Hooks/useSecureApi';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
+import useAuth from '../../../../Components/Hooks/useAuth';
+import Swal from "sweetalert2";
 
 const CheckoutForm = () => {
+    const [clientSecret, setClientSecret] = useState('')
+    const [transactionId, setTransactionId] = useState('');
+    const [error, setError] = useState('');
     const data = useLoaderData()
     console.log(data);
     const axiosSecure = useSecureApi();
     const stripe = useStripe();
     const elements = useElements();
-
+    const navigate = useNavigate();
+    const { user } = useAuth();
     const { buyer_name, email, home_location, home_name, home_owner_email, home_owner_name, offer_date, offer_price, offer_time, home_ending_price, home_starting_price } = data;
 
-    // useEffect(() => {
+    const totalPrice = offer_price;
+    useEffect(() => {
+        if (totalPrice > 0) {
+            axiosSecure.post('/create-payment-intent', { price: totalPrice })
+                .then(res => {
+                    console.log(res.data.clientSecret);
+                    setClientSecret(res.data.clientSecret);
+                })
+        }
 
-    //     axiosSecure.post('/payment/create-payment-intent', { amount: 1000 })
-
-    // }, [])
-
+    }, [axiosSecure, totalPrice])
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -43,6 +54,54 @@ const CheckoutForm = () => {
             console.log('[PaymentMethod]', paymentMethod);
         }
 
+        // confirm payment
+        const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
+            payment_method: {
+                card: card,
+                billing_details: {
+                    email: user?.email || 'anonymous',
+                    name: user?.displayName || 'anonymous'
+                }
+            }
+        })
+
+
+        if (confirmError) {
+            console.log('confirm error')
+        }
+        else {
+            console.log('payment intent', paymentIntent)
+            if (paymentIntent.status === 'succeeded') {
+                console.log('transaction id', paymentIntent.id);
+                setTransactionId(paymentIntent.id);
+
+                // now save the payment in the database
+                const payment = {
+                    email: user.email,
+                    price: totalPrice,
+                    transactionId: paymentIntent.id,
+                    date: new Date(), // utc date convert. use moment js to 
+                    propertyId: data._id,
+                    // menuItemIds: cart.map(item => item.menuId),
+                    status: 'pending'
+                }
+
+                const res = await axiosSecure.post('/payments', payment);
+                console.log('payment saved', res.data);
+                refetch();
+                if (res.data?.paymentResult?.insertedId) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Thank you for the taka paisa",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    navigate('/dashboard/boughtPropertys')
+                }
+
+            }
+        }
     }
 
     return (
@@ -67,8 +126,8 @@ const CheckoutForm = () => {
                         <p className="mb-2 uppercase">Owner Email: {home_owner_email}</p>
                     </div>
                 </div>
-                <div className="">
-                    <h2>You Have to pay total</h2>
+                <div className="p-4 text-center text-2xl">
+                    <h2>You Have to pay total: ${offer_price}</h2>
                 </div>
             </div>
             <form onSubmit={handleSubmit} className='flex flex-col'>
