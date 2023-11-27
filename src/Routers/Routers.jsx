@@ -162,6 +162,7 @@ const Routers = createBrowserRouter([
             {
                 path: 'payment/:id',
                 element: <PrivateRoute><Payment></Payment></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/offer_requests/${params.id}`)
             },
 
         ]
