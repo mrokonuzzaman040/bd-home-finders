@@ -51,22 +51,24 @@ const CheckoutForm = () => {
                 <div className="">
                     <h1 className="">Checkout</h1>
                 </div>
-                <div className="grid grid-cols-3">
+                <div className="grid grid-cols-3 gap-3 border-green-400 rounded-lg bg-indigo-300 p-4">
                     <div className="">
-                        <p className="">Buyer Name: {buyer_name}</p>
-                        <p className="">Buyer Email: {email}</p>
-                        <p className="">Offer Time: {offer_time} Date: {offer_date}</p>
+                        <p className="mb-2 uppercase">Buyer Name: {buyer_name}</p>
+                        <p className="mb-2 uppercase">Buyer Email: {email}</p>
+                        <p className="mb-2 uppercase">Offer Time: {offer_time} Date: {offer_date}</p>
                     </div>
                     <div className="">
-                        <p className="">Home Name: {home_name}</p>
-                        <p className="">Home Location: {home_location}</p>
-                        <p className="">Price Range: ${home_starting_price} - ${home_ending_price}</p>
+                        <p className="mb-2 uppercase">Home Name: {home_name}</p>
+                        <p className="mb-2 uppercase">Home Location: {home_location}</p>
+                        <p className="mb-2 uppercase">Price Range: ${home_starting_price} - ${home_ending_price}</p>
                     </div>
                     <div className="">
-                        <p className="">Home Owner Name: {home_owner_name}</p>
-                        <p className="">Home Owner Email: {home_owner_email}</p>
-
+                        <p className="mb-2 uppercase">Owner Name: {home_owner_name}</p>
+                        <p className="mb-2 uppercase">Owner Email: {home_owner_email}</p>
                     </div>
+                </div>
+                <div className="">
+                    <h2>You Have to pay total</h2>
                 </div>
             </div>
             <form onSubmit={handleSubmit} className='flex flex-col'>
