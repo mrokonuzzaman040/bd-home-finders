@@ -28,11 +28,11 @@ const UserPropertyBougth = () => {
     console.log(offer_requests);
 
     return (
-        <div>
+        <div className='mt-2'>
             <div>
                 <div className="bg-indigo-300 rounded-xl p-4">
                     <div className="">
-                        <h1 className="text-3xl text-white font-bold text-center mb-5 ">All Verified Home's Are Here</h1>
+                        <h1 className="text-3xl text-white font-bold text-center mb-5 ">All property you have bought</h1>
                     </div>
                     <div className="grid grid-cols-2 lg:grid-cols-3 gap-10">
                         {

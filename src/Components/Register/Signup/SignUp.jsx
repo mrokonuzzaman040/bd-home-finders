@@ -16,8 +16,8 @@ const SignUp = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
+    const [image, setImage] = useState();
 
-    const [image, setImage] = useState('');
     const onSubmit = async (data) => {
         const formData = new FormData();
         formData.append('image', data.photoURL[0]);
@@ -56,15 +56,23 @@ const SignUp = () => {
                                                 });
                                                 navigate('/');
                                             }
-
                                         })
                                 })
                                 .catch(error => console.log(error))
                         })
+                        .catch(error => {
+                            if (error.code === 'auth/email-already-in-use') {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'Email already in use!',
+                                })
+                            } else {
+                                console.log(error);
+                            }
+                        });
                 }
             })
-            .catch(error => console.log(error))
-
     };
 
 
@@ -130,3 +138,6 @@ const SignUp = () => {
 };
 
 export default SignUp;
+
+
+

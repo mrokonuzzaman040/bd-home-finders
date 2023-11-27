@@ -54,7 +54,7 @@ const Routers = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:5000/propertys/${params.id}`)
             },
             {
-                path: 'offer/:id',
+                path: '/offer/:id',
                 element: <PrivateRoute><UserMakeOffer></UserMakeOffer></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/wishlist/${params.id}`)
             },
@@ -62,6 +62,10 @@ const Routers = createBrowserRouter([
                 path: '/updateReject/:id',
                 element: <PrivateRoute><AgentRejectUpdate></AgentRejectUpdate></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/propertys/${params.id}`)
+            },
+            {
+                path: 'payment/:id',
+                element: <PrivateRoute><Payment></Payment></PrivateRoute>,
             },
             {
                 path: '/login',
@@ -111,13 +115,13 @@ const Routers = createBrowserRouter([
                 path: 'boughtPropertys',
                 element: <PrivateRoute><UserPropertyBougth></UserPropertyBougth></PrivateRoute>,
             },
+            // {
+            //     path: 'payment/:id',
+            //     element: <PrivateRoute><Payment></Payment></PrivateRoute>,
+            // },
             {
                 path: 'review',
                 element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>,
-            },
-            {
-                path: 'payment/:id',
-                element: <PrivateRoute><Payment></Payment></PrivateRoute>,
             },
             // agent routes
             {
