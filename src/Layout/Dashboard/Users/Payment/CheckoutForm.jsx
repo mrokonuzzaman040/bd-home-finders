@@ -34,12 +34,12 @@ const CheckoutForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <CardElement>
-                <button className='btn' type="submit" disabled={!stripe}>
-                    Pay
-                </button>
+        <form onSubmit={handleSubmit} className='flex flex-col'>
+            <CardElement className='bg-green-300 p-10'>
             </CardElement>
+            <button className="btn btn-sm btn-primary my-4" type="submit" disabled={!stripe}>
+                Pay
+            </button>
         </form>
     );
 };
