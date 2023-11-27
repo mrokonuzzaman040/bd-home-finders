@@ -23,9 +23,7 @@ const UserPropertyBougth = () => {
             const res = await secureApi.get(`/offer_requests/user/${user.email}`);
             return res.data;
         }
-    })
-
-    console.log(offer_requests);
+    });
 
     return (
         <div className='mt-2'>
@@ -51,7 +49,7 @@ const UserPropertyBougth = () => {
                                         <p className='flex items-center gap-2'><CiUser /> Agent Name : {ads.home_owner_name}</p>
                                         <div className="card-actions justify-end">
                                             {
-                                                ads.status === "accepted" ? <Link to={`/payment/${ads._id}`} className='btn'>Pay Now</Link> : <></>
+                                                ads.status === "accepted" ? <Link to={`/boughtPropertys/payment/${ads._id}`} className='btn'>Pay Now</Link> : <></>
                                             }
                                         </div>
                                     </div>

@@ -63,10 +63,10 @@ const Routers = createBrowserRouter([
                 element: <PrivateRoute><AgentRejectUpdate></AgentRejectUpdate></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/propertys/${params.id}`)
             },
-            {
-                path: 'payment/:id',
-                element: <PrivateRoute><Payment></Payment></PrivateRoute>,
-            },
+            // {
+            //     path: 'payment/:id',
+            //     element: <PrivateRoute><Payment></Payment></PrivateRoute>,
+            // },
             {
                 path: '/login',
                 element: <Login></Login>,
@@ -78,7 +78,7 @@ const Routers = createBrowserRouter([
         ],
     },
     {
-        path: '/dashboard',
+        path: 'dashboard',
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children: [
             // admin routes
@@ -154,6 +154,17 @@ const Routers = createBrowserRouter([
                 element: <PrivateRoute><Profile></Profile></PrivateRoute>,
             }
         ],
+    },
+    {
+        path: 'boughtPropertys',
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        children: [
+            {
+                path: 'payment/:id',
+                element: <PrivateRoute><Payment></Payment></PrivateRoute>,
+            },
+
+        ]
     },
     {
         path: "*",
