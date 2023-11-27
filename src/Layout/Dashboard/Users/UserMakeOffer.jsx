@@ -15,6 +15,7 @@ const UserMakeOffer = () => {
     const data = useLoaderData();
     const axiosPrivet = useSecureApi();
     const { home_name, home_location, home_owner_name, home_starting_price, home_ending_price, home_photo, email } = data;
+    console.log('data in the user make offer', data);
     const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString());
 
     useEffect(() => {
@@ -30,7 +31,7 @@ const UserMakeOffer = () => {
         const buyer_name = user.displayName;
         const buyer_id = user.uid;
         const home_id = data._id;
-        const home_owner_email = email;
+        const home_owner_email = data.home_owner_email;
         const home_owner_name = data.home_owner_name;
         const home_name = data.home_name;
         const home_location = data.home_location;
