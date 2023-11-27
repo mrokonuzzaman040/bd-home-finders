@@ -25,6 +25,8 @@ const UserPropertyBougth = () => {
         }
     })
 
+    console.log(offer_requests);
+
     return (
         <div>
             <div>
@@ -44,12 +46,12 @@ const UserPropertyBougth = () => {
                                         <p className='flex items-center gap-2'><FaLocationCrosshairs /> Location: {ads.home_location}</p>
                                         <p className='flex items-center gap-2'><CiBadgeDollar /> Offer Price: $ {ads.offer_price}</p>
                                         <p className='checkbox-primary'>{
-                                            ads.home_status === "accepted" ? <p className='flex items-center justify-start gap-1'><MdOutlineVerified className='text-green-700' />Accepted</p> : <p className='flex items-center justify-start gap-1'> <GoUnverified className='text-red-700' />Pending</p>
+                                            ads.status === "accepted" ? <p className='flex items-center justify-start gap-1'><MdOutlineVerified className='text-green-700' />Accepted</p> : <p className='flex items-center justify-start gap-1'> <GoUnverified className='text-red-700' />Pending</p>
                                         }</p>
                                         <p className='flex items-center gap-2'><CiUser /> Agent Name : {ads.home_owner_name}</p>
                                         <div className="card-actions justify-end">
                                             {
-                                                ads.home_status === "accepted" ? <button>Pay Now</button> : <></>
+                                                ads.status === "accepted" ? <Link to={`/payment/${ads._id}`} className='btn'>Pay Now</Link> : <></>
                                             }
                                         </div>
                                     </div>

@@ -33,6 +33,7 @@ import AgentRoutes from './UsersRoutes/AgentRouts';
 import UserMakeOffer from '../Layout/Dashboard/Users/UserMakeOffer';
 import AgentAddedPropertys from '../Layout/Dashboard/Agent/AgentAddedPropertys';
 import AgentRejectUpdate from '../Layout/Dashboard/Agent/AgentRejectUpdate';
+import Payment from '../Layout/Dashboard/Users/Payment/Payment';
 
 const Routers = createBrowserRouter([
     {
@@ -73,7 +74,7 @@ const Routers = createBrowserRouter([
         ],
     },
     {
-        path: 'dashboard',
+        path: '/dashboard',
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children: [
             // admin routes
@@ -113,6 +114,10 @@ const Routers = createBrowserRouter([
             {
                 path: 'review',
                 element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>,
+            },
+            {
+                path: 'payment/:id',
+                element: <PrivateRoute><Payment></Payment></PrivateRoute>,
             },
             // agent routes
             {
