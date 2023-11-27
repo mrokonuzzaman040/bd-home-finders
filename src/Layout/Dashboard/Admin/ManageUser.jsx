@@ -40,6 +40,7 @@ const ManageUser = () => {
 
     const handleRoleChange = (user, e) => {
         const user_role = e.target.value;
+        const role = 'Memeber';
         Swal.fire({
             title: "Are you sure?",
             text: `Change role to ${user_role}?`,
