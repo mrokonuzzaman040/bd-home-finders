@@ -38,6 +38,7 @@ const MyReviews = () => {
                             <tr>
                                 <th>#</th>
                                 <th>price</th>
+                                <th>Date & Time</th>
                                 <th>Transaction Id</th>
                                 <th>Status</th>
                             </tr>
@@ -46,6 +47,7 @@ const MyReviews = () => {
                             {payments.map((payment, index) => <tr key={payment._id}>
                                 <th>{index + 1}</th>
                                 <td>${payment.price}</td>
+                                <td>{payment.date}</td>
                                 <td>{payment.transactionId}</td>
                                 <td>{payment.offerStatus}</td>
                             </tr>)}

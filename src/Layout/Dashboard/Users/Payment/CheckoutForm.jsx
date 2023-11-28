@@ -4,6 +4,7 @@ import useSecureApi from '../../../../Components/Hooks/useSecureApi';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import useAuth from '../../../../Components/Hooks/useAuth';
 import Swal from "sweetalert2";
+import usePublicApi from '../../../../Components/Hooks/usePublicApi';
 
 const CheckoutForm = () => {
     const [clientSecret, setClientSecret] = useState('')
@@ -12,6 +13,7 @@ const CheckoutForm = () => {
     const data = useLoaderData()
     console.log(data);
     const axiosSecure = useSecureApi();
+    const publicApi = usePublicApi();
     const stripe = useStripe();
     const elements = useElements();
     const navigate = useNavigate();
@@ -88,7 +90,7 @@ const CheckoutForm = () => {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
-                        title: "Thank you for the taka paisa",
+                        title: "Your Payment has been successfully",
                         showConfirmButton: false,
                         timer: 1500
                     });
@@ -110,6 +112,7 @@ const CheckoutForm = () => {
                         <p className="mb-2 uppercase">Buyer Name: {buyer_name}</p>
                         <p className="mb-2 uppercase">Buyer Email: {email}</p>
                         <p className="mb-2 uppercase">Offer Time: {offer_time} Date: {offer_date}</p>
+                        <p className="mb-2 uppercase">Offer Price: ${offer_price}</p>
                     </div>
                     <div className="">
                         <p className="mb-2 uppercase">Home Name: {home_name}</p>

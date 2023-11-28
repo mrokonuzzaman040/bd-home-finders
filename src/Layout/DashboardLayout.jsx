@@ -122,14 +122,9 @@ const DashboardLayout = () => {
                                 Home</NavLink>
                         </li>
                         <li>
-                            <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/order/salad">
+                            <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/allProperties">
                                 <FaSearch></FaSearch>
-                                Menu</NavLink>
-                        </li>
-                        <li>
-                            <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/order/contact">
-                                <FaEnvelope></FaEnvelope>
-                                Contact</NavLink>
+                                All Property</NavLink>
                         </li>
                         <div className="divider"></div>
                     </ul>

@@ -40,9 +40,13 @@ const UserMakeOffer = () => {
         const status = 'pending';
         const offer_time = new Date().toLocaleTimeString();
         const offer_date = new Date().toLocaleDateString();
+
+        const starting_price = parseInt(home_starting_price);
+        const ending_price = parseInt(home_ending_price);
+
         const offer = { offer_price, buyer_email, buyer_name, buyer_id, home_id, home_owner_email, home_owner_name, home_name, home_location, home_photo, home_starting_price, home_ending_price, status, offer_time, offer_date };
 
-        if (offer_price >= home_starting_price && offer_price <= home_ending_price) {
+        if (offer_price >= starting_price && offer_price <= ending_price) {
             axiosPrivet.post('/offer_requests', offer)
                 .then(res => {
                     Swal.fire({
@@ -91,7 +95,7 @@ const UserMakeOffer = () => {
                         <p className='flex items-center text-xl'> <FaDollarSign /> Origial Price: ${home_starting_price} - ${home_ending_price}</p>
                         <div className='text-xl flex items-center gap-2'>
                             <FaDollarSign /> Price:
-                            <input name='offer_price' type="text" onClick={handlePriceChange} />
+                            <input defaultValue={home_ending_price} name='offer_price' type="text" />
                         </div>
                         <h2 className='text-xl flex items-center gap-2'><MdPerson /> Agent Name: {home_owner_name}</h2>
                     </div>

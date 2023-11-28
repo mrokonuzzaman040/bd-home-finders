@@ -115,10 +115,6 @@ const Routers = createBrowserRouter([
                 path: 'boughtPropertys',
                 element: <PrivateRoute><UserPropertyBougth></UserPropertyBougth></PrivateRoute>,
             },
-            // {
-            //     path: 'payment/:id',
-            //     element: <PrivateRoute><Payment></Payment></PrivateRoute>,
-            // },
             {
                 path: 'review',
                 element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>,
