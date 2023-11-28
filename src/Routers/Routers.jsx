@@ -34,6 +34,7 @@ import UserMakeOffer from '../Layout/Dashboard/Users/UserMakeOffer';
 import AgentAddedPropertys from '../Layout/Dashboard/Agent/AgentAddedPropertys';
 import AgentRejectUpdate from '../Layout/Dashboard/Agent/AgentRejectUpdate';
 import Payment from '../Layout/Dashboard/Users/Payment/Payment';
+import PaymentHistory from '../Layout/Dashboard/Users/PaymentHistory';
 
 const Routers = createBrowserRouter([
     {
@@ -114,6 +115,10 @@ const Routers = createBrowserRouter([
             {
                 path: 'boughtPropertys',
                 element: <PrivateRoute><UserPropertyBougth></UserPropertyBougth></PrivateRoute>,
+            },
+            {
+                path: 'paymentHistory',
+                element: <PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>,
             },
             {
                 path: 'review',

@@ -87,11 +87,11 @@ const CheckoutForm = () => {
 
                 const res = await axiosSecure.post('/payments', payment);
                 if (res.data?.paymentResult?.insertedId) {
-                    const updateOffer = {
-                        home_status: 'accepted'
-                    }
-                    const res = await publicApi.patch(`/offer_requests/afterPayement/${data._id}`, updateOffer);
-                    console.log(res);
+                    // const updateOffer = {
+                    //     home_status: 'accepted'
+                    // }
+                    // const res = await publicApi.patch(`/offer_requests/afterPayement/${data._id}`, updateOffer);
+                    // console.log(res);
                     Swal.fire({
                         position: "top-end",
                         icon: "success",

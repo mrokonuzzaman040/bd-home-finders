@@ -110,6 +110,11 @@ const DashboardLayout = () => {
                                                 Property Bougth</NavLink>
                                         </li>
                                         <li>
+                                            <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/paymentHistory">
+                                                <FaBook></FaBook>
+                                                Payment History</NavLink>
+                                        </li>
+                                        <li>
                                             <NavLink className='text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50' to="/dashboard/review">
                                                 <FaBook></FaBook>
                                                 My Review</NavLink>
