@@ -54,7 +54,6 @@ const CheckoutForm = () => {
             console.log('[PaymentMethod]', paymentMethod);
         }
 
-        // confirm payment
         const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: card,
@@ -75,20 +74,16 @@ const CheckoutForm = () => {
                 console.log('transaction id', paymentIntent.id);
                 setTransactionId(paymentIntent.id);
 
-                // now save the payment in the database
                 const payment = {
                     email: user.email,
                     price: totalPrice,
                     transactionId: paymentIntent.id,
-                    date: new Date(), // utc date convert. use moment js to 
+                    date: new Date(),
                     propertyId: data._id,
-                    // menuItemIds: cart.map(item => item.menuId),
-                    status: 'pending'
+                    offerStatus: 'pending'
                 }
 
                 const res = await axiosSecure.post('/payments', payment);
-                console.log('payment saved', res.data);
-                refetch();
                 if (res.data?.paymentResult?.insertedId) {
                     Swal.fire({
                         position: "top-end",
