@@ -7,6 +7,8 @@ import "swiper/css/navigation";
 import { Rating } from "@smastrom/react-rating";
 import '@smastrom/react-rating/style.css'
 
+import user from '../../../assets/image/user.png';
+
 
 
 const Review = () => {
@@ -36,8 +38,9 @@ const Review = () => {
                                 value={review.rating}
                                 readOnly
                             />
+                            <img className='w-20 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2' src={review.user_photo ? review.user_photo : user} alt="" />
                             <p className="py-8">{review.details}</p>
-                            <h3 className="text-2xl text-orange-400">{review.name}</h3>
+                            <h3 className="text-2xl text-orange-400">{review.user_name}</h3>
                         </div>
                     </SwiperSlide>
                 ))}
