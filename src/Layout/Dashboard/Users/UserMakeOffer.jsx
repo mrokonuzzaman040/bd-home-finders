@@ -15,7 +15,6 @@ const UserMakeOffer = () => {
     const data = useLoaderData();
     const axiosPrivet = useSecureApi();
     const { home_name, home_location, home_owner_name, home_starting_price, home_ending_price, home_photo, email } = data;
-    console.log('data in the user make offer', data);
     const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString());
 
     useEffect(() => {
