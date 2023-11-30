@@ -52,17 +52,17 @@ const Routers = createBrowserRouter([
             {
                 path: '/details/:id',
                 element: <PrivateRoute><AdsDetails></AdsDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/propertys/${params.id}`)
+                loader: ({ params }) => fetch(`https://bdhomefinders.vercel.app/propertys/${params.id}`)
             },
             {
                 path: '/offer/:id',
                 element: <PrivateRoute><UserMakeOffer></UserMakeOffer></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/wishlist/${params.id}`)
+                loader: ({ params }) => fetch(`https://bdhomefinders.vercel.app/wishlist/${params.id}`)
             },
             {
                 path: '/updateReject/:id',
                 element: <PrivateRoute><AgentRejectUpdate></AgentRejectUpdate></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/propertys/${params.id}`)
+                loader: ({ params }) => fetch(`https://bdhomefinders.vercel.app/propertys/${params.id}`)
             },
             // {
             //     path: 'payment/:id',
@@ -163,7 +163,7 @@ const Routers = createBrowserRouter([
             {
                 path: 'payment/:id',
                 element: <PrivateRoute><Payment></Payment></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/offer_requests/${params.id}`)
+                loader: ({ params }) => fetch(`https://bdhomefinders.vercel.app/offer_requests/${params.id}`)
             },
 
         ]
