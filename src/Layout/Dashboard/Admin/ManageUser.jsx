@@ -3,6 +3,8 @@ import useSecureApi from "../../../Components/Hooks/useSecureApi";
 import { FaTrashAlt, FaUsers } from "react-icons/fa";
 import profilePic from '../../../assets/image/user.png';
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
+
 
 const ManageUser = () => {
     const axiosSecure = useSecureApi();
@@ -71,6 +73,11 @@ const ManageUser = () => {
 
     return (
         <div>
+             <Helmet>
+                <meta charSet="utf-8" />
+                <title>Manage User ||bdHomeFinders</title>
+                <link rel="canonical" href="https://i.ibb.co/VxJBfnG/rokon-high-resolution-logo-transparent.png" />
+            </Helmet>
             <div>
                 <div className="flex justify-evenly my-4">
                     <h2 className="text-3xl">All Users</h2>

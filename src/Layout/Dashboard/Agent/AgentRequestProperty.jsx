@@ -4,6 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from '../../../Components/Hooks/useAuth';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { Helmet } from "react-helmet";
+
 
 
 
@@ -73,6 +75,11 @@ const AgentRequestProperty = () => {
 
     return (
         <div>
+             <Helmet>
+                <meta charSet="utf-8" />
+                <title>Pending Request ||bdHomeFinders</title>
+                <link rel="canonical" href="https://i.ibb.co/VxJBfnG/rokon-high-resolution-logo-transparent.png" />
+            </Helmet>
             <div>
                 <div className="overflow-x-auto">
                     <table className="table w-full">

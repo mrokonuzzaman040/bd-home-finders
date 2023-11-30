@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
-
+import { Helmet } from "react-helmet";
 // icons
 import { FaClock, FaDollarSign, FaMapMarkerAlt, FaVoicemail } from "react-icons/fa";
 import { MdPerson } from "react-icons/md";
@@ -82,6 +82,12 @@ const UserMakeOffer = () => {
 
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title> Make Offer || bdHomeFinders</title>
+                <link rel="canonical" href="https://i.ibb.co/VxJBfnG/rokon-high-resolution-logo-transparent.png" />
+            </Helmet>
+            
             <div className="flex flex-col gap-4">
                 <div className="flex items-center justify-center p-4">
                     <img src={home_photo} alt="home_photo" />

@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import useSecureApi from '../../../Components/Hooks/useSecureApi';
 import useAuth from '../../../Components/Hooks/useAuth';
 import { Link } from 'react-router-dom';
+import { Helmet } from "react-helmet";
 
 
 // Icons
@@ -56,6 +57,11 @@ const UserWishlist = () => {
 
     return (
         <div className="bg-indigo-300 rounded-xl p-4 mt-2">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title> Wishlist || bdHomeFinders</title>
+                <link rel="canonical" href="https://i.ibb.co/VxJBfnG/rokon-high-resolution-logo-transparent.png" />
+            </Helmet>
             <div className="grid grid-cols-2 lg:grid-cols-3 lg:gap-10 justify-between">
                 {
                     wishlist.map(wish =>

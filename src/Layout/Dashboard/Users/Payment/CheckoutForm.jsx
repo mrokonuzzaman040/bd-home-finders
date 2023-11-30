@@ -5,6 +5,8 @@ import { useLoaderData, useNavigate } from 'react-router-dom';
 import useAuth from '../../../../Components/Hooks/useAuth';
 import Swal from "sweetalert2";
 import usePublicApi from '../../../../Components/Hooks/usePublicApi';
+import { Helmet } from "react-helmet";
+
 
 const CheckoutForm = () => {
     const [clientSecret, setClientSecret] = useState('')
@@ -108,6 +110,11 @@ const CheckoutForm = () => {
 
     return (
         <div className="">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>CheckOut ||bdHomeFinders</title>
+                <link rel="canonical" href="https://i.ibb.co/VxJBfnG/rokon-high-resolution-logo-transparent.png" />
+            </Helmet>
             <div className="">
                 <div className="">
                     <h1 className="">Checkout</h1>

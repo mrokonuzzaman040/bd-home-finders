@@ -2,6 +2,8 @@ import React from 'react';
 import useSecureApi from '../../../Components/Hooks/useSecureApi';
 import { useQuery } from "@tanstack/react-query";
 import useAuth from '../../../Components/Hooks/useAuth';
+import { Helmet } from "react-helmet";
+
 
 import { Link } from "react-router-dom";
 import { GoUnverified } from "react-icons/go";
@@ -29,6 +31,11 @@ const UserPropertyBougth = () => {
 
     return (
         <div className='mt-2'>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title> Property Bought || bdHomeFinders</title>
+                <link rel="canonical" href="https://i.ibb.co/VxJBfnG/rokon-high-resolution-logo-transparent.png" />
+            </Helmet>
             <div>
                 <div className="bg-indigo-300 rounded-xl p-4">
                     <div className="">

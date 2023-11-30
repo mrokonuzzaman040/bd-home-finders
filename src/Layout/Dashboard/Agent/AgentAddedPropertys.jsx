@@ -2,6 +2,8 @@ import { useQuery } from '@tanstack/react-query';
 import useSecureApi from '../../../Components/Hooks/useSecureApi';
 import useAuth from '../../../Components/Hooks/useAuth';
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
+
 
 // Icons
 import { BsClockHistory } from "react-icons/bs";
@@ -58,6 +60,11 @@ const AgentAddedPropertys = () => {
 
     return (
         <div>
+             <Helmet>
+                <meta charSet="utf-8" />
+                <title>Your Property ||bdHomeFinders</title>
+                <link rel="canonical" href="https://i.ibb.co/VxJBfnG/rokon-high-resolution-logo-transparent.png" />
+            </Helmet>
             <div>
                 <div className="overflow-x-auto">
                     <table className="table w-full">

@@ -7,6 +7,9 @@ import useAgent from "../Components/Hooks/useAgent";
 import logo from '../assets/image/logo.png';
 import { Link } from "react-router-dom";
 
+import { Helmet } from "react-helmet";
+
+
 // Icons
 import { IoHome } from "react-icons/io5";
 import { MdAddHome } from "react-icons/md";
@@ -26,6 +29,12 @@ const DashboardLayout = () => {
 
     return (
         <div className="flex">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title> Dashboard || bdHomeFinders</title>
+                <link rel="canonical" href="https://i.ibb.co/VxJBfnG/rokon-high-resolution-logo-transparent.png" />
+            </Helmet>
+
             {/* dashboard side bar */}
             <div className="w-64 ">
                 <div className="flex items-center justify-center">

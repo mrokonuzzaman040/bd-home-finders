@@ -2,6 +2,8 @@ import React from 'react';
 import useSecureApi from '../../../Components/Hooks/useSecureApi';
 import { useQuery } from '@tanstack/react-query';
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
+
 
 // Icons
 import { BsClockHistory } from "react-icons/bs";
@@ -116,6 +118,11 @@ const ManageProperty = () => {
 
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Dashboard ||bdHomeFinders</title>
+                <link rel="canonical" href="https://i.ibb.co/VxJBfnG/rokon-high-resolution-logo-transparent.png" />
+            </Helmet>
             <div>
                 <div className="overflow-x-auto">
                     <table className="table w-full">

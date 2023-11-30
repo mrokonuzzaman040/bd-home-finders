@@ -15,6 +15,8 @@ import usePublicApi from '../../Hooks/usePublicApi';
 import Swal from 'sweetalert2';
 import useAuth from '../../Hooks/useAuth';
 import { useForm } from 'react-hook-form';
+import { Helmet } from "react-helmet";
+
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -114,6 +116,11 @@ const AdsDetails = () => {
 
     return (
         <div className="flex flex-col gap-4">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title> {home_name} || bdHomeFinders</title>
+                <link rel="canonical" href="https://i.ibb.co/VxJBfnG/rokon-high-resolution-logo-transparent.png" />
+            </Helmet>
             <div className="flex items-center justify-center p-4">
                 <img src={home_photo} alt="home_photo" />
             </div>

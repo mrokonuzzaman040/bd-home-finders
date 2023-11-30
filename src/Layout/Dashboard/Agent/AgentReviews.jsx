@@ -3,7 +3,7 @@ import React from 'react';
 const AgentReviews = () => {
     return (
         <div>
-
+            
         </div>
     );
 };

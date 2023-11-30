@@ -3,6 +3,8 @@ import { useLoaderData } from 'react-router-dom';
 import useAuth from '../../../Components/Hooks/useAuth';
 import useSecureApi from '../../../Components/Hooks/useSecureApi';
 import Swal from 'sweetalert2';
+import { Helmet } from "react-helmet";
+
 
 const AgentRejectUpdate = () => {
     const data = useLoaderData();
@@ -65,6 +67,11 @@ const AgentRejectUpdate = () => {
     }
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Update ||bdHomeFinders</title>
+                <link rel="canonical" href="https://i.ibb.co/VxJBfnG/rokon-high-resolution-logo-transparent.png" />
+            </Helmet>
             <div className="">
                 <form onSubmit={handleUpdate} className="flex flex-col items-center">
                     <img src={home_photo} alt="" className="w-24 h-24" />

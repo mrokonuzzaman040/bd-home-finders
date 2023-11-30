@@ -2,6 +2,8 @@ import React from 'react';
 import usePublicApi from '../../../Components/Hooks/usePublicApi';
 import useAuth from '../../../Components/Hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
+import { Helmet } from "react-helmet";
+
 // Icons
 import { MdOutlineDeleteForever } from "react-icons/md";
 
@@ -47,6 +49,11 @@ const AdminReviews = () => {
     };
     return (
         <>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Add Review ||bdHomeFinders</title>
+                <link rel="canonical" href="https://i.ibb.co/VxJBfnG/rokon-high-resolution-logo-transparent.png" />
+            </Helmet>
             <div className="mt-2">
                 {
                     reviews.map(review => (

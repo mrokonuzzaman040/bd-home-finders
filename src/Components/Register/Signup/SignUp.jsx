@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from '../../Providers/AuthProvider';
 import SocialLogin from '../../Hooks/SocialLogin/SocialLogin';
 import Swal from 'sweetalert2';
+import { Helmet } from "react-helmet";
+
 
 const SignUp = () => {
 
@@ -79,6 +81,11 @@ const SignUp = () => {
 
     return (
         <div className="hero min-h-screen bg-base-200">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>SignUp || bdHomeFinders</title>
+                <link rel="canonical" href="https://i.ibb.co/VxJBfnG/rokon-high-resolution-logo-transparent.png" />
+            </Helmet>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
                     <h1 className="text-5xl font-bold">Sign up now!</h1>

@@ -4,6 +4,9 @@ import usePublicApi from '../../../Components/Hooks/usePublicApi';
 import Swal from 'sweetalert2';
 import useAuth from '../../../Components/Hooks/useAuth';
 import useSecureApi from '../../../Components/Hooks/useSecureApi';
+
+import { Helmet } from "react-helmet";
+
 // Image Hosting
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -74,6 +77,11 @@ const AgentAddProperty = () => {
 
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Add Property ||bdHomeFinders</title>
+                <link rel="canonical" href="https://i.ibb.co/VxJBfnG/rokon-high-resolution-logo-transparent.png" />
+            </Helmet>
             <div className="flex flex-col items-center justify-center mt-3">
                 <h2 className='text-2xl'>Add Your Property </h2>
                 <div className="divider text-indigo-400"></div>

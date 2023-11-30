@@ -2,6 +2,7 @@ import React from 'react';
 import useSecureApi from '../../../Components/Hooks/useSecureApi';
 import useAuth from '../../../Components/Hooks/useAuth';
 import { useQuery } from '@tanstack/react-query';
+import { Helmet } from "react-helmet";
 
 const PaymentHistory = () => {
 
@@ -18,6 +19,11 @@ const PaymentHistory = () => {
 
     return (
         <div>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title> Payment History || bdHomeFinders</title>
+                <link rel="canonical" href="https://i.ibb.co/VxJBfnG/rokon-high-resolution-logo-transparent.png" />
+            </Helmet>
             <div>
                 <h2 className="text3-xl">Total Payments: {payments.length}</h2>
                 <div className="overflow-x-auto">
