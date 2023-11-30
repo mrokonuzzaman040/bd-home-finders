@@ -32,15 +32,17 @@ const Review = () => {
             <Swiper className="mySwiper">
                 {reviews.map(review => (
                     <SwiperSlide key={review._id}>
-                        <div className="flex flex-col items-center mx-24 my-16">
+                        <div className="flex flex-col justify-center items-center mx-24 my-16 gap-3">
+                            <div className="">
+                                <img className='w-[80px] h-[80px] rounded-full' src={review.user_photo ? review.user_photo : user} alt="" />
+                            </div>
                             <Rating
                                 style={{ maxWidth: 180 }}
                                 value={review.rating}
                                 readOnly
                             />
-                            <img className='w-20 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2' src={review.user_photo ? review.user_photo : user} alt="" />
                             <p className="py-8">{review.details}</p>
-                            <h3 className="text-2xl text-orange-400">{review.user_name}</h3>
+                            <h3 className="text-2xl text-orange-400">{review.user_name ? review.user_name : 'User'}</h3>
                         </div>
                     </SwiperSlide>
                 ))}
