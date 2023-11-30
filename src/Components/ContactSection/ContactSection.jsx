@@ -9,6 +9,9 @@ const ContactSection = () => {
 
     return (
         <Container maxWidth="md">
+            <Typography align="center" gutterBottom>
+                Createed with MUI
+            </Typography>
             <Typography variant="h4" align="center" gutterBottom>
                 Contact Us
             </Typography>
