@@ -58,9 +58,6 @@ const AdsDetails = () => {
             home_owner_photo,
             home_owner_email,
             home_status,
-            home_owner_name,
-            home_owner_photo,
-            home_owner_email,
             email: user.email,
         }
 
@@ -132,7 +129,7 @@ const AdsDetails = () => {
                 <div className="flex flex-col gap-3">
                     <button onClick={() => handelWishClick(_id)} className='btn text-white border-none bg-indigo-500 shadow-lg shadow-indigo-500/50'><FaHeartCirclePlus /> Add to wishlist</button>
                     <h2 className='flex justify-center items-center btn'><MdPerson ></MdPerson> Agent Name: {home_owner_name}</h2>
-                    <button className="btn" onClick={() => document.getElementById('my_modal_3').showModal()}>open modal</button>
+                    <button className="btn" onClick={() => document.getElementById('my_modal_3').showModal()}>Give a FeedBack</button>
                     <dialog id="my_modal_3" className="modal">
                         {/* <div className="modal-box w-11/12 max-w-5xl"> */}
                         <div className="modal-box w-11/12 max-w-5xl">
