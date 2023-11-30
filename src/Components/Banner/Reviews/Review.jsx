@@ -4,9 +4,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/navigation";
+
 import { Rating } from "@smastrom/react-rating";
 import '@smastrom/react-rating/style.css'
-
 import user from '../../../assets/image/user.png';
 
 
